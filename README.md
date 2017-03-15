@@ -37,3 +37,10 @@ You've created a new ASP.NET Core project. [Learn what's new](https://go.microso
 *   [Publish to Microsoft Azure Web Apps](https://go.microsoft.com/fwlink/?LinkID=398609)
 
 We would love to hear your [feedback](https://go.microsoft.com/fwlink/?LinkId=518015)
+
+## Commands to get up and running
+1. Clone this repo: `git clone https://github.com/mzrimsek/scheduler.git`
+2. Install dependencies: `dotnet restore`
+3. Build the project: `dotnet build`
+4. Run database migrations: `dotnet ef database update`
+5. Run the project: `dotnet run`
