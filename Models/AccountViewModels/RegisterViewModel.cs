@@ -8,6 +8,12 @@ namespace scheduler.Models.AccountViewModels
 {
     public class RegisterViewModel
     {
+
+        [Required]
+        [DataTypeAttribute(DataType.Text)]
+        [DisplayAttribute(Name = "Username")]
+        public string Username {get; set;}
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
