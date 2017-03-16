@@ -8,8 +8,10 @@
 
   <ItemGroup>
     <None Update="scheduler.db" CopyToOutputDirectory="PreserveNewest" />
-
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="app.yaml" CopyToPublishDirectory="Always" />
+    <Content Include="Dockerfile" CopyToPublishDirectory="Always" />
   </ItemGroup>
   
   <ItemGroup>
