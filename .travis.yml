@@ -2,9 +2,6 @@ language: csharp
 sudo: required
 dist: trusty
 deploy:
-  # provider: gae
-  # keyfile: "Scheduler-3b87c61d431a.json"
-  # project: "eng-mechanism-161715"
   on: deploy-settings
 addons:  
   apt:
