@@ -1,19 +1,21 @@
-language: csharp
 sudo: required
 deploy:
   # provider: gae
   # keyfile: "Scheduler-3b87c61d431a.json"
   # project: "eng-mechanism-161715"
   on: deploy-settings
+cache:
+  directories:
+    - "$HOME/google-cloud-sdk/"
 before_install:
 # Install gcloud
-- if [ ! -d ${HOME}/google-cloud-sdk ]; then
-     curl https://sdk.cloud.google.com | bash;
-  fi
+- gcloud version || true
+- if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
+# Add gcloud to $PATH
+- source /home/travis/google-cloud-sdk/path.bash.inc
 # Decrypt service account json file
 - openssl aes-256-cbc -K $encrypted_4a7399281b85_key -iv $encrypted_4a7399281b85_iv -in Scheduler-3b87c61d431a.json.enc -out Scheduler-3b87c61d431a.json -d
 # Activate gcloud
 - gcloud auth activate-service-account --key-file Scheduler-3b87c61d431a.json
 script:
 - ./build.sh publish
-
