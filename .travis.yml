@@ -1,4 +1,6 @@
+language: csharp
 sudo: required
+dist: trusty
 deploy:
   # provider: gae
   # keyfile: "Scheduler-3b87c61d431a.json"
@@ -7,9 +9,18 @@ deploy:
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
+addons:  
+  apt:
+    packages:
+    - gettext
+    - libcurl4-openssl-dev
+    - libicu-dev
+    - libssl-dev
+    - libunwind8
+    - zlib1g
 before_install:
 # install dotnet core
-- sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ precise main" > /etc/apt/sources.list.d/dotnetdev.list'
+- sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list'
 - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
 - sudo apt-get update && sudo apt-get install dotnet-dev-1.0.1
 # Install gcloud
