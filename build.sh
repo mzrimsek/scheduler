@@ -13,7 +13,7 @@ run() {
 publish() {
     dotnet restore
     dotnet publish
-    gcloud beta app deploy ./bin/Debug/netcoreapp1.0/publish/app.yaml
+    gcloud beta app deploy ./bin/Debug/netcoreapp1.0/publish/app.yaml --quiet
 }
 
 OPTION=$1
