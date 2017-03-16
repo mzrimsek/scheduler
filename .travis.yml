@@ -1,6 +1,7 @@
 before_install:
 - openssl aes-256-cbc -K $encrypted_4a7399281b85_key -iv $encrypted_4a7399281b85_iv
   -in Scheduler-3b87c61d431a.json.enc -out Scheduler-3b87c61d431a.json -d
+sudo: required
 deploy:
   provider: gae
   keyfile: "Scheduler-3b87c61d431a.json"
