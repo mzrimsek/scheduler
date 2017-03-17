@@ -3,10 +3,6 @@ sudo: required
 dist: trusty
 mono: none
 dotnet: 1.0.1
-deploy:
-  provider: gae
-  project: "eng-mechanism-161715"
-  on: deploy-settings
 addons:  
   apt:
     packages:
@@ -17,15 +13,16 @@ addons:
     - libunwind8
     - zlib1g
 before_install:
-# Download gcloud
-- export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
-- echo "deb https://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-- curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-# Install dependencies
-- sudo apt-get update && sudo apt-get install google-cloud-sdk
 # Decrypt service account json file
 - openssl aes-256-cbc -K $encrypted_4a7399281b85_key -iv $encrypted_4a7399281b85_iv -in Scheduler-3b87c61d431a.json.enc -out Scheduler-3b87c61d431a.json -d
-# Activate gcloud
-- gcloud auth activate-service-account --key-file Scheduler-3b87c61d431a.json
-script:
-- ./build.sh publish
+# Build project
+- dotnet restore
+- dotnet publish
+deploy:
+  provider: gae
+  skip_cleanup: true
+  keyfile: Scheduler-3b87c61d431a.json
+  project: "eng-mechanism-161715"
+  config: "./bin/Debug/netcoreapp1.0/publish/app.yaml"
+  on: 
+    branch: deploy-settings
