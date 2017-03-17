@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PROJECT="scheduler-2017"
+
 build() {
     dotnet restore
     dotnet build
@@ -13,8 +15,8 @@ run() {
 publish() {
     dotnet restore
     dotnet publish
-    gcloud config set project eng-mechanism-161715
-    gcloud beta app deploy ./bin/Debug/netcoreapp1.0/publish/app.yaml --quiet
+    gcloud config set project $PROJECT
+    gcloud app deploy ./bin/Debug/netcoreapp1.0/publish/app.yaml --quiet
 }
 
 OPTION=$1
