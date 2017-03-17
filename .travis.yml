@@ -16,8 +16,7 @@ addons:
     - libunwind8
     - zlib1g
 before_install:
-- openssl aes-256-cbc -K $encrypted_4a7399281b85_key -iv $encrypted_4a7399281b85_iv
-  -in Scheduler-49358966bb28.json.enc -out Scheduler-49358966bb28.json -d
+- openssl aes-256-cbc -K $encrypted_4a7399281b85_key -iv $encrypted_4a7399281b85_iv -in Scheduler-49358966bb28.json.enc -out Scheduler-49358966bb28.json -d
 install:
 - dotnet restore
 - dotnet publish
