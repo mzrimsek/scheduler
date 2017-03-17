@@ -5,6 +5,7 @@ PROJECT="scheduler-2017"
 build() {
     dotnet restore
     dotnet build
+    dotnet ef database update
 }
 
 run() {
@@ -15,6 +16,7 @@ run() {
 publish() {
     dotnet restore
     dotnet publish
+    dotnet ef database update
     gcloud config set project $PROJECT
     gcloud app deploy ./bin/Debug/netcoreapp1.0/publish/app.yaml --quiet
 }

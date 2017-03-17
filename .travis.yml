@@ -17,6 +17,7 @@ before_install:
 install:
 - dotnet restore
 - dotnet publish
+- dotnet ef database update
 script:
 - echo "No Script to run"
 deploy:
@@ -25,6 +26,5 @@ deploy:
   keyfile: Scheduler-49358966bb28.json
   project: "scheduler-2017"
   config: "./bin/Debug/netcoreapp1.0/publish/app.yaml"
-  branches:
-    only: 
-    - master
+  on:
+    branch: master
