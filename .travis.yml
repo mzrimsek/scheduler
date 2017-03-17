@@ -26,4 +26,4 @@ deploy:
   project: "scheduler-2017"
   config: "./bin/Debug/netcoreapp1.0/publish/app.yaml"
   on: 
-    branch: deploy-settings
+    branch: master
