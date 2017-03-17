@@ -24,8 +24,7 @@ install:
 script:
 - echo "No Script to run"
 after_success:
-  - 
-  "curl -o /tmp/travis-automerge https://github.com/cdown/travis-automerge/blob/3f68cf01a049a00735bb56772be597672a100b04/travis-automerge"
+  - "curl -o /tmp/travis-automerge https://github.com/cdown/travis-automerge/blob/3f68cf01a049a00735bb56772be597672a100b04/travis-automerge"
   - "chmod a+x /tmp/travis-automerge"
   - "BRANCHES_TO_MERGE_REGEX='master' BRANCH_TO_MERGE_INTO=prod GITHUB_REPO=mzrimsek/scheduler /tmp/travis-automerge"
 deploy:
