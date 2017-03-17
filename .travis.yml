@@ -3,7 +3,10 @@ sudo: required
 dist: trusty
 mono: none
 dotnet: 1.0.1
-addons:  
+env:
+  global:
+    secure: hTPOWX2aVhH/Xz2qnBqFLM6XnI7QQAqgy5cC00a+z+X2gP0u4n660fT/4ikk43lzF1GhECfirP4pYx/sblD9ROGWspkf69lwAmivbmWlz5yMmhu9SyoDYltZktJgFroBOQLvjrAfHiURzdcUJTklrd0k02LILZ1mXba1jBX57TgK4zXxrSeWtmsh0PaaaRtX+2ADlwuvsqzl5Q/I36F29slSFfXtDlPMzq63TrfOPfe0GePa3GLypkEsBXTm0aZBTRgpz55WAzF8RAdyXd4uDejdjzENgfZHQQyC9nM6VeAmnc0IkdMSD440uNLrpxWKCOZykjrU5K4NVXAzaK9z4oEdfVbr4vt2AudRAkRWQU09Szj7O5o40r/2OdrFeqKo/Xg9Oba7leHN9mGj06Q84gWzXSCf5rYuFbZY3ozZglk+YsKnmvn+127faaVPcO6KW73dTTfMedEV2Cfq4cWND5EUQwwfO6gzBQXSSIz2CiUbnM5FHrWh1Ttug/UlKaawY/9JXsyegHG2L/2pFvV9zwIWW7K0sRFLCvZGHiLN5cV07supd0LRhjfVbh6z6Nwccl7HQZSoaCFoCkXOUumk1Gu89csxJHda45Ptms5/E4sznV79zPthS+EKmoGO9w4IxjxfTZ6hHbLdqLaSd327joLZzCA8B1Bq0ixDDrGEmm8=
+addons:
   apt:
     packages:
     - gettext
@@ -13,18 +16,23 @@ addons:
     - libunwind8
     - zlib1g
 before_install:
-- openssl aes-256-cbc -K $encrypted_4a7399281b85_key -iv $encrypted_4a7399281b85_iv -in Scheduler-49358966bb28.json.enc -out Scheduler-49358966bb28.json -d
+- openssl aes-256-cbc -K $encrypted_4a7399281b85_key -iv $encrypted_4a7399281b85_iv
+  -in Scheduler-49358966bb28.json.enc -out Scheduler-49358966bb28.json -d
 install:
 - dotnet restore
 - dotnet publish
 - dotnet ef database update
 script:
 - echo "No Script to run"
+after_success:
+  - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
+  - "chmod a+x /tmp/travis-automerge"
+  - "BRANCHES_TO_MERGE_REGEX='master' BRANCH_TO_MERGE_INTO=prod GITHUB_REPO=mzrimsek/scheduler /tmp/travis-automerge"
 deploy:
   provider: gae
   skip_cleanup: true
   keyfile: Scheduler-49358966bb28.json
-  project: "scheduler-2017"
+  project: scheduler-2017
   config: "./bin/Debug/netcoreapp1.0/publish/app.yaml"
   on:
-    branch: master
+    branch: prod
