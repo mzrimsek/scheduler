@@ -23,6 +23,10 @@ install:
 - dotnet publish
 script:
 - echo "No Script to run"
+after_success:
+  - "curl -o /tmp/travis-automerge https://raw.githubusercontent.com/cdown/travis-automerge/master/travis-automerge"
+  - "chmod a+x /tmp/travis-automerge"
+  - "BRANCHES_TO_MERGE_REGEX='master' BRANCH_TO_MERGE_INTO=prod GITHUB_REPO=mzrimsek/scheduler /tmp/travis-automerge"
 deploy:
   provider: gae
   skip_cleanup: true
@@ -30,4 +34,4 @@ deploy:
   project: scheduler-2017
   config: "./bin/Debug/netcoreapp1.0/publish/app.yaml"
   on:
-    branch: master
+    branch: prod
