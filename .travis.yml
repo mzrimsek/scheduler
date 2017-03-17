@@ -1,0 +1,29 @@
+language: csharp
+sudo: required
+dist: trusty
+mono: none
+dotnet: 1.0.1
+addons:  
+  apt:
+    packages:
+    - gettext
+    - libcurl4-openssl-dev
+    - libicu-dev
+    - libssl-dev
+    - libunwind8
+    - zlib1g
+before_install:
+- openssl aes-256-cbc -K $encrypted_4a7399281b85_key -iv $encrypted_4a7399281b85_iv -in Scheduler-49358966bb28.json.enc -out Scheduler-49358966bb28.json -d
+install:
+- dotnet restore
+- dotnet publish
+script:
+- echo "No Script to run"
+deploy:
+  provider: gae
+  skip_cleanup: true
+  keyfile: Scheduler-49358966bb28.json
+  project: "scheduler-2017"
+  config: "./bin/Debug/netcoreapp1.0/publish/app.yaml"
+  on: 
+    branch: master
