@@ -11,7 +11,7 @@ namespace scheduler.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "What is the Scheduler?";
 
             return View();
         }
