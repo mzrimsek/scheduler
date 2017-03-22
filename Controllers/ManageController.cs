@@ -30,9 +30,7 @@ namespace scheduler.Controllers
             _emailSender = emailSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
         }
-
-        //
-        // GET: /Manage/Index
+        
         [HttpGet]
         public async Task<IActionResult> Index(ManageMessageId? message = null)
         {
@@ -55,16 +53,12 @@ namespace scheduler.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Manage/ChangePassword
         [HttpGet]
         public IActionResult ChangePassword()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -89,16 +83,12 @@ namespace scheduler.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
-        //
-        // GET: /Manage/SetPassword
         [HttpGet]
         public IActionResult SetPassword()
         {
             return View();
         }
 
-        //
-        // POST: /Manage/SetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SetPassword(SetPasswordViewModel model)

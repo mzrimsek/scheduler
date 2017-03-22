@@ -33,8 +33,6 @@ namespace scheduler.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
-        //
-        // GET: /Account/Login
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl = null)
@@ -46,8 +44,6 @@ namespace scheduler.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -80,8 +76,6 @@ namespace scheduler.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/Register
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
@@ -90,8 +84,6 @@ namespace scheduler.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -121,8 +113,6 @@ namespace scheduler.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Account/Logout
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
@@ -132,7 +122,6 @@ namespace scheduler.Controllers
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
-        // GET: /Account/ConfirmEmail
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
@@ -150,8 +139,6 @@ namespace scheduler.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        //
-        // GET: /Account/ForgotPassword
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPassword()
@@ -159,8 +146,6 @@ namespace scheduler.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -188,8 +173,6 @@ namespace scheduler.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/ForgotPasswordConfirmation
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ForgotPasswordConfirmation()
@@ -197,8 +180,6 @@ namespace scheduler.Controllers
             return View();
         }
 
-        //
-        // GET: /Account/ResetPassword
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ResetPassword(string code = null)
@@ -206,8 +187,6 @@ namespace scheduler.Controllers
             return code == null ? View("Error") : View();
         }
 
-        //
-        // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -232,8 +211,6 @@ namespace scheduler.Controllers
             return View();
         }
 
-        //
-        // GET: /Account/ResetPasswordConfirmation
         [HttpGet]
         [AllowAnonymous]
         public IActionResult ResetPasswordConfirmation()
@@ -241,8 +218,6 @@ namespace scheduler.Controllers
             return View();
         }
 
-        //
-        // GET /Account/AccessDenied
         [HttpGet]
         public IActionResult AccessDenied()
         {
