@@ -224,8 +224,6 @@ namespace scheduler.Controllers
             return View();
         }
 
-        #region Helpers
-
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -245,7 +243,5 @@ namespace scheduler.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
-
-        #endregion
     }
 }
