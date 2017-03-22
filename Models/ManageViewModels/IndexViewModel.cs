@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
 namespace scheduler.Models.ManageViewModels
@@ -13,9 +10,5 @@ namespace scheduler.Models.ManageViewModels
         public IList<UserLoginInfo> Logins { get; set; }
 
         public string PhoneNumber { get; set; }
-
-        public bool TwoFactor { get; set; }
-
-        public bool BrowserRemembered { get; set; }
     }
 }
