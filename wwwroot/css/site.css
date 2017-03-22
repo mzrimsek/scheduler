@@ -48,3 +48,36 @@ textarea {
         display: none;
     }
 }
+
+
+
+/* Banner */
+.top-banner{
+    position: relative;
+    overflow: hidden;
+}
+
+.top-banner img{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    opacity: .2;
+}
+
+.top-banner h1{
+    padding: 200px;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Icon images */
+.col-md-4 .icon-images{
+    margin: auto;
+    max-width: 250px;
+}
+
+/* Icon descriptions */
+.col-md-4 .icon-images .icon-text{
+    margin: auto;
+}
