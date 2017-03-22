@@ -123,8 +123,6 @@ namespace scheduler.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
-        #region Helpers
-
         private void AddErrors(IdentityResult result)
         {
             foreach (var error in result.Errors)
@@ -144,7 +142,5 @@ namespace scheduler.Controllers
         {
             return _userManager.GetUserAsync(HttpContext.User);
         }
-
-        #endregion
     }
 }
