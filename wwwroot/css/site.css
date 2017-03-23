@@ -28,6 +28,11 @@ textarea {
 }
 
 /* Icon images */
+.icon-image {
+    text-align: center;
+}
+
 .icon-image img{
     max-width: 250px;
+    margin: 0 auto;
 }
