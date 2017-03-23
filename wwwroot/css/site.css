@@ -49,35 +49,32 @@ textarea {
     }
 }
 
-
-
-/* Banner */
-.top-banner{
-    position: relative;
-    overflow: hidden;
+/* Top Banner */
+.business-header {
+    height: 400px;
+    background: url('../images/scheduler-Banner.jpg') center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
-.top-banner img{
-    position: absolute;
-    width: 100%;
-    height: auto;
-    opacity: .2;
+.business-header .tagline{
+    opacity: 1 !important;
 }
-
-.top-banner h1{
-    padding: 200px;
-    position: relative;
-    z-index: 2;
-}
-
 
 /* Icon images */
-.col-md-4 .icon-images{
-    margin: auto;
+.col-sm-4 img{
     max-width: 250px;
 }
 
-/* Icon descriptions */
-.col-md-4 .icon-images .icon-text{
-    margin: auto;
+/* Main banner header */
+.business-header .tagline{
+    padding-top: 150px;
+    text-align: center;
+    color: black;
+}
+
+.col-sm-4{
+    justify-content: center;
 }
