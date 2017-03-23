@@ -48,3 +48,33 @@ textarea {
         display: none;
     }
 }
+
+/* Top Banner */
+.business-header {
+    height: 400px;
+    background: url('../images/scheduler-Banner.jpg') center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.business-header .tagline{
+    opacity: 1 !important;
+}
+
+/* Icon images */
+.col-sm-4 img{
+    max-width: 250px;
+}
+
+/* Main banner header */
+.business-header .tagline{
+    padding-top: 150px;
+    text-align: center;
+    color: black;
+}
+
+.col-sm-4{
+    justify-content: center;
+}
