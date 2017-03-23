@@ -52,7 +52,6 @@ textarea {
 /* Top Banner */
 .business-header {
     height: 400px;
-    background: url('../images/scheduler-Banner.jpg') center center no-repeat scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
