@@ -3,14 +3,15 @@
 PROJECT="scheduler-2017"
 
 build() {
+    export ASPNETCORE_ENVIRONMENT=Development
     dotnet restore
     dotnet build
+    dotnet bundle
     dotnet ef database update
 }
 
 run() {
     build
-    export ASPNETCORE_ENVIRONMENT=Development
     dotnet run
 }
 
