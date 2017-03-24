@@ -1,7 +1,5 @@
 #!/bin/bash
 
-PROJECT="scheduler-2017"
-
 build() {
     export ASPNETCORE_ENVIRONMENT=Development
     dotnet restore
