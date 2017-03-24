@@ -11,23 +11,28 @@ function run {
     dotnet run
 }
 
-$OPTION = $null
-if ($args.Length -eq 0){
-   $OPTION = "build"
+if ($args.Length -le 1) {
+    $OPTION = $null
+    if ($args.Length -eq 0) {
+    $OPTION = "build"
+    }
+    else {
+        $OPTION = $args[0]
+    }
+
+    if ($OPTION -eq "build") {
+        Write-Host "Building..."
+        build
+    }
+    ElseIf ($OPTION -eq "run") {
+        Write-Host "Building and running..."
+        run
+    }
+    Else {
+        Write-Host "Invalid option"
+        Write-Host "Valid options are 'build' (default) and 'run'"
+    }
 }
 else {
-    $OPTION = $args[0]
-}
-
-if ($OPTION -eq "build") {
-    Write-Host "Building..."
-    build
-}
-ElseIf ($OPTION -eq "run") {
-    Write-Host "Building and running..."
-    run
-}
-Else {
-    Write-Host "Invalid option"
-    Write-Host "Valid options are 'build' (default) and 'run'"
+    Write-Host "Too many arguments"
 }
