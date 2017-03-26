@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="row">
         <div class="control-group" id="fields">
-            <label class="control-label" for="field1">Enter A Contact to Add to the Meeting</label>
+            <label class="control-label" for="field1">Enter a contact to add to the meeting</label>
             <div class="controls"> 
                 <form role="form" autocomplete="off">
                     <div class="entry input-group col-xs-3">
@@ -26,11 +26,22 @@
 	</div>    
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
+<div class="container"> 
+    <label class = "form-label" for="field1">Choose a date range for the meeting</label>  
+    <div class="row"> 
+        <div class='col-xs-3'>
+            <div class="form-group">          
+                <div class='input-group date' id='datetimepicker6'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class='col-xs-3'>
             <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
+                <div class='input-group date' id='datetimepicker7'>
                     <input type='text' class="form-control" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
@@ -40,4 +51,5 @@
         </div>
     </div>
 </div>
+
 
