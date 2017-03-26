@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Schedule";
+}
+<h2>@ViewData["Message"]</h2>
+
+
+<div class="container">
+	<div class="row">
+        <div class="control-group" id="fields">
+            <label class="control-label" for="field1">Enter A Contact to Add to the Meeting</label>
+            <div class="controls"> 
+                <form role="form" autocomplete="off">
+                    <div class="entry input-group col-xs-3">
+                        <input class="form-control" name="fields[]" type="text" placeholder="E-mail Address" />
+                    	<span class="input-group-btn">
+                            <button class="btn btn-success btn-add" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            <br>
+            <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another contact</small>
+            </div>
+        </div>
+	</div>    
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
