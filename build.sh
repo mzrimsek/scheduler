@@ -1,10 +1,10 @@
 #!/bin/bash
 
-PROJECT="scheduler-2017"
-
 build() {
+    export ASPNETCORE_ENVIRONMENT=Development
     dotnet restore
     dotnet build
+    dotnet bundle
     dotnet ef database update
 }
 
@@ -13,25 +13,18 @@ run() {
     dotnet run
 }
 
-publish() {
-    dotnet restore
-    dotnet publish
-    dotnet ef database update
-    gcloud config set project $PROJECT
-    gcloud app deploy ./bin/Debug/netcoreapp1.0/publish/app.yaml --quiet
-}
-
-OPTION=$1
-if [ "$OPTION" = "" ] || [ "$OPTION" = "build" ]; then
-	echo "Building..."
-	build
-elif [ "$OPTION" = "run" ]; then
-    echo "Building and running..."
-    run
-elif [ "$OPTION" = "publish" ]; then
-	echo "Publishing..."
-	publish
+if [ "$#" -le 1 ]; then
+    OPTION=$1
+    if [ "$OPTION" = "" ] || [ "$OPTION" = "build" ]; then
+        echo "Building..."
+        build
+    elif [ "$OPTION" = "run" ]; then
+        echo "Building and running..."
+        run
+    else
+        echo "Invalid option"
+        echo "Valid options are 'build' (default) and 'run'"
+    fi
 else
-	echo "Invalid option"
-    echo "Valid options are 'build' (default), 'run', and 'publish'"
+    echo "Too many arguments"
 fi
