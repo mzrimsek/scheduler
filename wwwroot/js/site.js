@@ -24,14 +24,33 @@ $(function()
 });
 
 $(function () {
-    $('#datetimepicker6').datetimepicker();
-    $('#datetimepicker7').datetimepicker({
-        useCurrent: false //Important! See issue #1075
+    $('#datetimepicker1').datetimepicker({
+        format: 'DD/MM/YYYY'
     });
-    $("#datetimepicker6").on("dp.change", function (e) {
-        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    $('#datetimepicker2').datetimepicker({
+        useCurrent: false, //Important! See issue #1075
+        format: 'DD/MM/YYYY'
     });
-    $("#datetimepicker7").on("dp.change", function (e) {
-        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    $("#datetimepicker1").on("dp.change", function (e) {
+        $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+    });
+    $("#datetimepicker2").on("dp.change", function (e) {
+        $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+    });
+});
+
+$(function () {
+    $('#datetimepicker3').datetimepicker({
+        format: 'LT'
+    });
+    $('#datetimepicker4').datetimepicker({
+        useCurrent: false,
+        format: 'LT'
+    });
+    $('#datetimepicker3').on("dp.change", function(e) {
+        $('datetimepicker4').data("DateTimePicker").minDate(e.date);
+    });
+    $('#datetimepicker4').on("dp.change", function(e) {
+        $('datetimepicker3').data("DateTimePicker").maxDate(e.date);
     });
 });
