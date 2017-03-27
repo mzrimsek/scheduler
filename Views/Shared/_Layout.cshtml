@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/lib/bootstrap-datetimepicker/dist/css/bootstrap-datetimepicker.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-        <link rel="stylesheet" href="~/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" />
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -17,7 +16,6 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/lib/bootstrap-datetimepicker/dist/css/bootstrap-datetimepicker.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"/>
     </environment>
     <style>
         .business-header{
@@ -63,8 +61,6 @@
         <script src="~/lib/moment/dist/moment.js"></script>
         <script src="~/lib/bootstrap-datetimepicker/dist/js/bootstrap-datetimepicker.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        <script src="~/moment/min/moment.min.js"></script>
-        <script src="~/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"
@@ -79,10 +75,7 @@
                 asp-fallback-src="~/lib/moment/dist/moment.min.js">
         </script>
         <script src="~/lib/bootstrap-datetimepicker/dist/js/bootstrap-datetimepicker.min.js"></script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-        <script src="~/moment/min/moment.min.js"></script>
-        <script src="~/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-       
+        <script src="~/js/site.min.js" asp-append-version="true"></script>       
     </environment>
     @RenderSection("scripts", required: false)
 </body>
