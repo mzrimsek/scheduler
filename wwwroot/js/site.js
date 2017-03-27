@@ -25,11 +25,11 @@ $(function()
 
 $(function () {
     $('#datetimepicker1').datetimepicker({
-        format: 'DD/MM/YYYY'
+        format: 'DD/MM/YYYY',
     });
     $('#datetimepicker2').datetimepicker({
         useCurrent: false, //Important! See issue #1075
-        format: 'DD/MM/YYYY'
+        format: 'DD/MM/YYYY',
     });
     $("#datetimepicker1").on("dp.change", function (e) {
         $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
@@ -40,17 +40,35 @@ $(function () {
 });
 
 $(function () {
-    $('#datetimepicker3').datetimepicker({
-        format: 'LT'
-    });
-    $('#datetimepicker4').datetimepicker({
+    var $startTime1 = $('#datetimepicker3');
+    var $endTime1 = $('#datetimepicker4');
+
+    $startTime1.datetimepicker({
+        format: 'LT',
         useCurrent: false,
-        format: 'LT'
+        minDate: moment({h:8}),
+        maxDate: moment({h:18}),
+        stepping: 15
     });
-    $('#datetimepicker3').on("dp.change", function(e) {
-        $('datetimepicker4').data("DateTimePicker").minDate(e.date);
+
+    $endTime1.datetimepicker({
+        format: 'LT',
+        minDate: moment({h:8}),
+        maxDate: moment({h:18}),
+        stepping: 15
     });
-    $('#datetimepicker4').on("dp.change", function(e) {
-        $('datetimepicker3').data("DateTimePicker").maxDate(e.date);
+
+   $startTime1.on("dp.change", function(e) {
+        $endTime1.data("DateTimePicker").minDate(e.date);
+    });
+
+    $endTime1.on("dp.change", function(e) {
+        $startTime1.data("DateTimePicker").maxDate(e.date);
+    })
+
+    $endTime1.on("dp.show", function(e) {
+        if (!$endTime1.date("DateTimePicker").maxDate(e.date)) {
+            var defaultDate = $startTime1.data("DateTimePicker").date().add(15, 'minutes');
+        }
     });
 });
