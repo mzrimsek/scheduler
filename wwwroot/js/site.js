@@ -36,12 +36,12 @@ $(function alignColumns() {
 
 $(function () {
     $('#datetimepicker1').datetimepicker({
-        format: 'DD/MM/YYYY',
+        format: 'MM/DD/YYYY',
         daysOfWeekDisabled: [0, 6]
     });
     $('#datetimepicker2').datetimepicker({
         useCurrent: false, //Important! See issue #1075
-        format: 'DD/MM/YYYY',
+        format: 'MM/DD/YYYY',
         daysOfWeekDisabled: [0, 6]
     });
     $("#datetimepicker1").on("dp.change", function (e) {
