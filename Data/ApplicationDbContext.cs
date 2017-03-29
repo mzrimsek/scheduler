@@ -17,6 +17,7 @@ namespace scheduler.Data
             base.OnModelCreating(builder);
         }
 
-        public DbSet<Event> events { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Invitee> Invitees { get; set; }
     }
 }
