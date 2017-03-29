@@ -25,6 +25,9 @@ textarea {
     padding-top: 150px;
     text-align: center;
     color: black;
+    font-size: 55px;
+    font-weight: lighter;
+    font-family: 'Font Name', Josefin Sans;
 }
 
 /* Icon images */
@@ -61,4 +64,19 @@ textarea {
 
 .button-container {
     margin-bottom: 15px;
+}
+
+/* What We Do */
+.what-we-do{
+    text-align: center;
+}
+
+.what-we-do h2{
+    font-size: 55px;
+    font-family: 'Shadows Into Light Two', cursive;
+}
+
+/* H2 headers */
+.row h2{
+    font-family: 'Shadows Into Light Two', cursive;
 }
