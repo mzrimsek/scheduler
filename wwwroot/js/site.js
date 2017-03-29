@@ -59,15 +59,15 @@ $(function () {
     $startTime1.datetimepicker({
         format: 'LT',
         useCurrent: false,
-        minDate: moment({h:8}),
-        maxDate: moment({h:18}),
+        minDate: moment({h:8, m:01}),
+        maxDate: moment({h:18, m:01}),
         stepping: 15
     });
 
     $endTime1.datetimepicker({
         format: 'LT',
-        minDate: moment({h:8}),
-        maxDate: moment({h:18}),
+        minDate: moment({h:8, m:01}),
+        maxDate: moment({h:18, m:01}),
         stepping: 15
     });
 
@@ -80,7 +80,7 @@ $(function () {
     })
 
     $endTime1.on("dp.show", function(e) {
-        if (!$endTime1.date("DateTimePicker").maxDate(e.date)) {
+        if (!$endTime1.data("DateTimePicker").maxDate(e.date)) {
             var defaultDate = $startTime1.data("DateTimePicker").date().add(15, 'minutes');
         }
     });
