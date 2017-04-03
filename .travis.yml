@@ -21,7 +21,7 @@ before_install:
 install:
 - dotnet restore
 - dotnet publish
-- dotnet ef database update
+- dotnet ef database update -e Production
 script:
 - echo "No Script to run"
 after_success:
