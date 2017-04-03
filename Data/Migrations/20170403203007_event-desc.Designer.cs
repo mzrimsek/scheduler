@@ -8,9 +8,10 @@ using scheduler.Data;
 namespace scheduler.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170403203007_event-desc")]
+    partial class eventdesc
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
@@ -186,9 +187,6 @@ namespace scheduler.Data.Migrations
                     b.Property<DateTime>("EndTime");
 
                     b.Property<DateTime>("StartTime");
-
-                    b.Property<string>("Title")
-                        .IsRequired();
 
                     b.HasKey("Id");
 
