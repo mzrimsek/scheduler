@@ -9,8 +9,6 @@ $(function()
             currentEntry = $(this).parents('.entry:first'),
             newEntry = $(currentEntry.clone()).appendTo(controlForm);
 
-        alignColumns();
-
         newEntry.find('input').val('');
         controlForm.find('.entry:not(:last) .btn-add')
             .removeClass('btn-add').addClass('btn-remove')
@@ -20,17 +18,15 @@ $(function()
     }).on('click', '.btn-remove', function(e)
     {
 		$(this).parents('.entry:first').remove();
-
 		e.preventDefault();
 		return false;
 	});
 });
 
-$(function alignColumns() {
-    $('.control-group').each(function() {
-        if ($(this).index % 10 == 0) {
-            document.write("Something something dark side.");
-        }
+$(function() {
+    $(document).on('click', '.btn-primary', function(e) {
+        e.preventDefault();
+        console.log("We did a thing");
     });
 });
 
