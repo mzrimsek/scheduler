@@ -17,6 +17,7 @@ namespace scheduler.Models.DatabaseModels
         public DateTime StartTime { get; set; }
         [Required]
         public DateTime EndTime { get; set; }
+        public string Description { get; set; }
         
     }
 }
