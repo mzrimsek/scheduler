@@ -3,7 +3,6 @@
 build() {
     export ASPNETCORE_ENVIRONMENT=Development
     dotnet restore
-    dotnet build
     dotnet bundle
     dotnet ef database update
 }
