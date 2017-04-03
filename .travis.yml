@@ -20,7 +20,7 @@ before_install:
 install:
 - export ASPNETCORE_ENVIRONMENT=Production
 - dotnet restore
-- dotnet publish
+- dotnet build
 - dotnet ef database update
 script:
 - echo "No Script to run"
