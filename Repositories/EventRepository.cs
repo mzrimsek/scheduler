@@ -33,10 +33,7 @@ namespace scheduler.Repositories
         public void Update(Event eventToUpdate)
         {
             var existingEvent = GetById(eventToUpdate.Id);
-            existingEvent.Title = eventToUpdate.Title;
-            existingEvent.Description = eventToUpdate.Description;
-            existingEvent.StartTime = eventToUpdate.StartTime;
-            existingEvent.EndTime = eventToUpdate.EndTime;
+            existingEvent = eventToUpdate;
             _context.SaveChanges();
         }
     }
