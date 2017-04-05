@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using scheduler.Models;
+using scheduler.Models.SchedulerViewModels;
 
 namespace scheduler.Controllers
 {
@@ -31,6 +32,16 @@ namespace scheduler.Controllers
                 return View(); 
             }
             return RedirectToAction(nameof(AccountController.Login));          
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateEvent(EventViewModel model, string returnUrl = null) 
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            
+
+            return View(model);
         }
 
         private Task<ApplicationUser> GetCurrentUserAsync()
