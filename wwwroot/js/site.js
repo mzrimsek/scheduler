@@ -23,12 +23,6 @@ $(function()
 	});
 });
 
-$(function() {
-    $(document).on('click', '.btn-primary', function(e) {
-        e.preventDefault();
-        console.log("We did a thing");
-    });
-});
 
 $(function () {
     $('#datetimepicker1').datetimepicker({
