@@ -1,18 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
-using scheduler.Data;
+using scheduler.Interfaces;
 using scheduler.Models.DatabaseModels;
-using scheduler.Repositories;
 
 namespace scheduler.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly EventRepository _eventRepo;
+        private readonly IEventRepository _eventRepo;
 
-        public HomeController()
+        public HomeController(IEventRepository eventRepo)
         {
-            var context = new ApplicationDbContext();
-            _eventRepo = new EventRepository(context);
+            _eventRepo = eventRepo;
         }
 
         public IActionResult Index()
