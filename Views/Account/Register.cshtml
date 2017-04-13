@@ -4,9 +4,10 @@
 }
 
 <h2>@ViewData["Title"]</h2>
-
+<h4>Create a new account.</h4>
+<div class="row">
+<div class="col-sm-6">
 <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-    <h4>Create a new account.</h4>
     <hr />
     <div class="form-group">
         <label asp-for="Email" class="col-md-2 control-label"></label>
@@ -35,7 +36,25 @@
         </div>
     </div>
 </form>
-
+</div>
+<br>
+<div class="col-sm-6">
+    <div class="password-requirements">
+        <h4>Password Requirements:</h4>
+        <br>
+        <br>
+        <div class="requirement-bullets">
+        <p>
+        <li>minimum of 8 characters </li>
+        <li>at least one uppercase and lowercase letter </li>
+        <li>must have one symbol or number</li>
+        <li>cannot contain your username </li>
+        <li>cannot be a previously used password </li>
+        </p>
+        </div>
+    </div>
+</div>
+</div>
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }
