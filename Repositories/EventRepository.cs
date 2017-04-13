@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using scheduler.Data;
+using scheduler.Interfaces;
 using scheduler.Models.DatabaseModels;
 
 namespace scheduler.Repositories 
 {
-    public class EventRepository
+    public class EventRepository : IEventRepository
     {
         private readonly ApplicationDbContext _context;
 
@@ -19,7 +20,7 @@ namespace scheduler.Repositories
             return _context.Events.SingleOrDefault(x => x.Id == id);
         }
 
-        public List<Event> GetByCreatedId(int createdId) 
+        public List<Event> GetByCreatedId(string createdId) 
         {
             return _context.Events.Where(x => x.CreatedById == createdId).ToList();
         }

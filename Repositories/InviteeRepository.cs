@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using scheduler.Data;
+using scheduler.Interfaces;
 using scheduler.Models.DatabaseModels;
 
 namespace scheduler.Repositories 
 {
-    public class InviteeRepository
+    public class InviteeRepository : IInviteeRepository
     {
         private readonly ApplicationDbContext _context;
 
