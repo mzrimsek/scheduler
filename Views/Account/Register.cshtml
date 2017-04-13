@@ -5,55 +5,53 @@
 
 <h2>@ViewData["Title"]</h2>
 <h4>Create a new account.</h4>
+<hr />
 <div class="row">
-<div class="col-sm-6">
-<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-    <hr />
-    <div class="form-group">
-        <label asp-for="Email" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="col-md-6">
+        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label asp-for="Email" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-default">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="password-requirements">
+            <h4>Password Requirements:</h4>
+            <div class="requirement-bullets">
+                <ul>
+                    <li>Minimum of 8 characters </li>
+                    <li>Must have at least one uppercase and lowercase letter </li>
+                    <li>Must have at least one number</li>
+                    <li>Must have at least one special character</li>
+                    <li>Cannot contain your username </li>
+                    <li>Cannot be a previously used password </li>
+                </ul>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Password" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="ConfirmPassword" class="form-control" />
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Register</button>
-        </div>
-    </div>
-</form>
-</div>
-<br>
-<div class="col-sm-6">
-    <div class="password-requirements">
-        <h4>Password Requirements:</h4>
-        <br>
-        <br>
-        <div class="requirement-bullets">
-        <p>
-        <li>minimum of 8 characters </li>
-        <li>at least one uppercase and lowercase letter </li>
-        <li>must have one symbol or number</li>
-        <li>cannot contain your username </li>
-        <li>cannot be a previously used password </li>
-        </p>
-        </div>
-    </div>
-</div>
 </div>
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
