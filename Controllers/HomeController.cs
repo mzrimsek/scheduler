@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using scheduler.Interfaces;
-using scheduler.Models.DatabaseModels;
 
 namespace scheduler.Controllers
 {
@@ -28,11 +27,6 @@ namespace scheduler.Controllers
         public IActionResult Error()
         {
             return View();
-        }
-
-        public void Save(Event newEvent)
-        {
-            _eventRepo.Create(newEvent);
         }
     }
 }
