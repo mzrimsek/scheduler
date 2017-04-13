@@ -10,7 +10,7 @@ namespace scheduler.Models.DatabaseModels
         public int Id { get; set; }
         [Required]
         [ForeignKeyAttribute("ApplicationUser")]
-        public int CreatedById { get; set; }
+        public string CreatedById { get; set; }
         [Required]
         public DateTime CreatedOn { get; set; }
         [Required]
