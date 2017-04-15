@@ -1,6 +1,6 @@
 @using System.Collections.Generic
 @using Microsoft.AspNetCore.Http
-@model EventViewModel
+@model scheduler.Models.SchedulerViewModels.EventViewModel
 
 @{
     ViewData["Title"] = "Schedule";
@@ -10,7 +10,7 @@
 <form asp-controller="Scheduler" asp-action="CreateEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
 
     <div class="event-description-container col-xs-12">
-        <form>
+        <div>
             <div class="form-group">
                 <label asp-for="EventTitle" for="inputdefault">Event Title</label>
                 <input asp-for="EventTitle" class="form-control" id="inputdefault" type="text">
@@ -19,15 +19,15 @@
                 <label asp-for="EventDescription" for="inputdefault">Event Description</label>
                 <input asp-for="EventDescription" class="form-control" id="inputdefault" type="text">
             </div>
-        </form>
+        </div>
     </div>
-
+<!--
     <div class="contact-container">
         <div class="row">
             <div class="control-group col-xs-3" id="fields">
                 <label asp-for="Email" class="control-label" for="field1">Enter a contact to add to the meeting</label>
                 <div class="controls"> 
-                    <form role="form" autocomplete="off">
+                    <div role="form" autocomplete="off">
                         <div class="entry input-group ">
                             <input asp-for="Email" class="form-control" name="fields[]" type="text" placeholder="E-mail Address"/>
                             <span class="input-group-btn">
@@ -36,14 +36,14 @@
                                 </button>
                             </span>
                         </div>
-                    </form>
+                    </div>
                 <br>
                 <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another contact</small>
                 </div>
             </div>
         </div>    
     </div>
-
+-->
     <div class="date-container"> 
         <label class="form-label" asp-for="StartDate" for="field1">Choose a date range for the meeting</label>  
         <div class="row"> 
