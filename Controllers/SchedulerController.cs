@@ -23,23 +23,18 @@ namespace scheduler.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-
             var user = await GetCurrentUserAsync();
-
-            _logger.LogInformation(1, "Oh man all kinds of text just please work." + user);
             
             if (user != null) {
                 return View(); 
             }
-            return RedirectToAction(nameof(AccountController.Login));          
+            return RedirectToAction("Login", "Account");
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(EventViewModel model, string returnUrl = null) 
+        public IActionResult CreateEvent(EventViewModel model, string returnUrl = null) 
         {
             ViewData["ReturnUrl"] = returnUrl;
-
-            
 
             return View(model);
         }
