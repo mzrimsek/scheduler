@@ -21,15 +21,15 @@
             </div>
         </div>
     </div>
-<!--
+
     <div class="contact-container">
         <div class="row">
             <div class="control-group col-xs-3" id="fields">
-                <label asp-for="Email" class="control-label" for="field1">Enter a contact to add to the meeting</label>
+                <labelclass="control-label">Enter a contact to add to the meeting</label>
                 <div class="controls"> 
                     <div role="form" autocomplete="off">
                         <div class="entry input-group ">
-                            <input asp-for="Email" class="form-control" name="fields[]" type="text" placeholder="E-mail Address"/>
+                            <input asp-for="InviteeEmails[0]" class="form-control" name="fields[]" type="text" placeholder="E-mail Address"/>
                             <span class="input-group-btn">
                                 <button class="btn btn-success btn-add" type="button">
                                     <span class="glyphicon glyphicon-plus"></span>
@@ -43,7 +43,7 @@
             </div>
         </div>    
     </div>
--->
+    
     <div class="date-container"> 
         <label class="form-label" asp-for="StartDate" for="field1">Choose a date range for the meeting</label>  
         <div class="row"> 
