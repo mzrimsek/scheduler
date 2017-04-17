@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -42,12 +43,15 @@ namespace scheduler.Controllers
             var eventDbModel = EventModelMapper.MapFrom(currentUser, model);
             var newEvent = _eventRepo.Create(eventDbModel);
 
+            var invitees = model.InviteeEmails = new List<string>();
+            invitees.Add("someEmail@gmail.com");
+            invitees.Add("someOtherEmail@gmail.com");
+
             foreach(var email in model.InviteeEmails)
             {
-                var userId = "id-found-searching-for-user-in-db-by-email";
+                var userId = email;
                 var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, userId);
                 _inviteeRepo.Create(inviteeDbModel);
-                
             }
 
             return View(model);
