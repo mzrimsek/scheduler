@@ -14,7 +14,7 @@ namespace scheduler.Models.SchedulerViewModels
         public string EventDescription { get; set; }
 
         [Required]
-        public List<string> Invitees { get; set; }
+        public List<string> InviteeEmails { get; set; }
 
         [Required]
         public string StartDate { get; set; }
