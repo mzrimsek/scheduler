@@ -7,7 +7,7 @@ namespace scheduler.Interfaces
     {
         Event GetById(int id);
         List<Event> GetByCreatedId(string createdId);
-        void Create(Event newEvent);
-        void Update(Event eventToUpdate);
+        Event Create(Event newEvent);
+        Event Update(Event eventToUpdate);
     }
 }
