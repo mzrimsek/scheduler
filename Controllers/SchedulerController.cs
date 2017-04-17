@@ -28,7 +28,7 @@ namespace scheduler.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
             
             if (user != null) {
                 return View(); 
@@ -39,27 +39,18 @@ namespace scheduler.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateEvent(EventViewModel model) 
         {
-            var currentUser = await GetCurrentUserAsync();
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
             var eventDbModel = EventModelMapper.MapFrom(currentUser, model);
             var newEvent = _eventRepo.Create(eventDbModel);
 
-            var invitees = model.InviteeEmails = new List<string>();
-            invitees.Add("someEmail@gmail.com");
-            invitees.Add("someOtherEmail@gmail.com");
-
             foreach(var email in model.InviteeEmails)
             {
-                var userId = email;
-                var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, userId);
+                var inviteeUser = await _userManager.FindByEmailAsync(email);
+                var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, inviteeUser);
                 _inviteeRepo.Create(inviteeDbModel);
             }
 
             return View(model);
-        }
-
-        private Task<ApplicationUser> GetCurrentUserAsync()
-        {
-            return _userManager.GetUserAsync(HttpContext.User);
         }
     }
 }
