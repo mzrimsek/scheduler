@@ -47,16 +47,16 @@ $(function () {
     var $endTime1 = $('#datetimepicker4');
 
     $startTime1.datetimepicker({
-        format: 'LT',
+        format: 'HH:mm',
         useCurrent: false,
-        minDate: moment({h:8, m:01}),
+        minDate: moment({h:08, m:01}),
         maxDate: moment({h:18, m:01}),
         stepping: 15
     });
 
     $endTime1.datetimepicker({
-        format: 'LT',
-        minDate: moment({h:8, m:01}),
+        format: 'HH:mm',
+        minDate: moment({h:08, m:01}),
         maxDate: moment({h:18, m:01}),
         stepping: 15
     });
@@ -67,7 +67,7 @@ $(function () {
 
     $endTime1.on("dp.change", function(e) {
         $startTime1.data("DateTimePicker").maxDate(e.date);
-    })
+    });
 
     $endTime1.on("dp.show", function(e) {
         if (!$endTime1.data("DateTimePicker").maxDate(e.date)) {
