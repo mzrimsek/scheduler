@@ -81,10 +81,6 @@ textarea {
     font-family: 'Shadows Into Light Two', cursive;
 }
 
-.password-requirements h4{
-    float: left;
-    color: red;
-}
-.requirement-bullets{
+.password-requirements h4, .requirement-bullets{
     color: red;
 }
