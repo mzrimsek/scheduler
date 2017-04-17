@@ -14,12 +14,14 @@ namespace scheduler.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger _logger;
         private readonly IEventRepository _eventRepo;
+        private readonly IInviteeRepository _inviteeRepo;
 
-        public SchedulerController(UserManager<ApplicationUser> userManager, ILoggerFactory loggerFactory, IEventRepository eventRepo) 
+        public SchedulerController(UserManager<ApplicationUser> userManager, ILoggerFactory loggerFactory, IEventRepository eventRepo, IInviteeRepository inviteeRepo) 
         {
             _userManager = userManager;
             _logger = loggerFactory.CreateLogger<SchedulerController>();
             _eventRepo = eventRepo;
+            _inviteeRepo = inviteeRepo;
         }
 
         [HttpGet]
@@ -40,7 +42,13 @@ namespace scheduler.Controllers
             var eventDbModel = EventModelMapper.MapFrom(currentUser, model);
             var newEvent = _eventRepo.Create(eventDbModel);
 
-            //need to add invitees
+            foreach(var email in model.InviteeEmails)
+            {
+                var userId = "id-found-searching-for-user-in-db-by-email";
+                var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, userId);
+                _inviteeRepo.Create(inviteeDbModel);
+                
+            }
 
             return View(model);
         }
