@@ -80,3 +80,11 @@ textarea {
 .row h2{
     font-family: 'Shadows Into Light Two', cursive;
 }
+
+.password-requirements h4{
+    float: left;
+    color: red;
+}
+.requirement-bullets{
+    color: red;
+}

@@ -6,7 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using scheduler.Data;
+using scheduler.Interfaces;
 using scheduler.Models;
+using scheduler.Repositories;
 using scheduler.Services;
 
 namespace scheduler
@@ -27,8 +29,7 @@ namespace scheduler
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -38,6 +39,8 @@ namespace scheduler
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<IInviteeRepository, InviteeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
