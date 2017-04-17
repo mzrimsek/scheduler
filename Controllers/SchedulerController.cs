@@ -37,8 +37,8 @@ namespace scheduler.Controllers
         public async Task<IActionResult> CreateEvent(EventViewModel model) 
         {
             var currentUser = await GetCurrentUserAsync();
-            var eventModel = EventModelMapper.MapFrom(currentUser, model);
-            var newEvent = _eventRepo.Create(eventModel);
+            var eventDbModel = EventModelMapper.MapFrom(currentUser, model);
+            var newEvent = _eventRepo.Create(eventDbModel);
 
             //need to add invitees
 
