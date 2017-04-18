@@ -3,23 +3,26 @@ using scheduler.Interfaces;
 using scheduler.Models.DatabaseModels;
 using scheduler.Models.SchedulerViewModels;
 
-namespace scheduler.Builders
+namespace scheduler.Getters
 {
-    public class CalendarEventViewModelBuilder
+    public class CalendarEventViewModelGetter
     {
         private readonly IEventRepository _eventRepo;
         private readonly IInviteeRepository _inviteeRepo;
 
-        public CalendarEventViewModelBuilder(IEventRepository eventRepo, IInviteeRepository inviteeRepo)
+        public CalendarEventViewModelGetter(IEventRepository eventRepo, IInviteeRepository inviteeRepo)
         {
             _eventRepo = eventRepo;
             _inviteeRepo = inviteeRepo;
         }
 
-        public CalendarEventViewModel BuildFrom(string userId)
+        public List<CalendarEventViewModel> GetByUserId(string userId)
         {
+            var calendarEventViewModels = new List<CalendarEventViewModel>();
+
             var eventsForUser = GetEventsForUser(userId);
-            
+
+            return calendarEventViewModels;
         }
 
         private List<Event> GetEventsForUser(string userId)

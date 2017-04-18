@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using scheduler.Builders;
+using scheduler.Getters;
 using scheduler.Interfaces;
 using scheduler.Mappers;
 using scheduler.Models;
@@ -17,7 +16,7 @@ namespace scheduler.Controllers
         private readonly ILogger _logger;
         private readonly IEventRepository _eventRepo;
         private readonly IInviteeRepository _inviteeRepo;
-        private readonly CalendarEventViewModelBuilder _calendarVmBuilder;
+        private readonly CalendarEventViewModelGetter _calendarViewModelGetter;
 
         public SchedulerController(UserManager<ApplicationUser> userManager, ILoggerFactory loggerFactory, IEventRepository eventRepo, IInviteeRepository inviteeRepo) 
         {
@@ -25,7 +24,7 @@ namespace scheduler.Controllers
             _logger = loggerFactory.CreateLogger<SchedulerController>();
             _eventRepo = eventRepo;
             _inviteeRepo = inviteeRepo;
-            _calendarVmBuilder = new CalendarEventViewModelBuilder(eventRepo, inviteeRepo);
+            _calendarViewModelGetter = new CalendarEventViewModelGetter(eventRepo, inviteeRepo);
         }
 
         [HttpGet]
@@ -67,9 +66,10 @@ namespace scheduler.Controllers
         }
 
         [HttpGet]
-        public IActionResult ViewCalendar()
+        public async Task<IActionResult> ViewCalendar()
         {
-            var calendarViewModels = new List<CalendarEventViewModel>();
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var calendarViewModels = _calendarViewModelGetter.GetByUserId(currentUser.Id);
 
             return View(calendarViewModels);
         }
