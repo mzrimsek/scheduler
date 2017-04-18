@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using scheduler.Data;
@@ -36,6 +37,11 @@ namespace scheduler.Repositories
             var existingInvitee = GetById(inviteeToUpdate.Id);
             existingInvitee = inviteeToUpdate;
             _context.SaveChanges();
+        }
+
+        public List<Invitee> GetByUserId(string userId)
+        {
+            return _context.Invitees.Where(x => x.UserId == userId).ToList();
         }
     }
 }
