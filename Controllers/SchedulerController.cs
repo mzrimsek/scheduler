@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -50,8 +49,12 @@ namespace scheduler.Controllers
                 if(!string.IsNullOrEmpty(trimmedEmail))
                 {
                     var inviteeUser = await _userManager.FindByEmailAsync(trimmedEmail);
-                    var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, inviteeUser);
-                    _inviteeRepo.Create(inviteeDbModel);
+                    if(inviteeUser != null)
+                    {
+                        var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, inviteeUser);
+                        _inviteeRepo.Create(inviteeDbModel);
+                    }
+                    
                 }
             }
 
