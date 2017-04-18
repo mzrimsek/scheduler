@@ -25,20 +25,13 @@
     <div class="contact-container">
         <div class="row">
             <div class="control-group col-xs-3" id="fields">
-                <labelclass="control-label">Enter a contact to add to the meeting</label>
+                <label asp-for="InviteeEmails" class="control-label">Enter contacts to add to the meeting separated by commas</label>
                 <div class="controls"> 
                     <div role="form" autocomplete="off">
                         <div class="entry input-group ">
-                            <input asp-for="InviteeEmails[0]" class="form-control" name="fields[]" type="text" placeholder="E-mail Address"/>
-                            <span class="input-group-btn">
-                                <button class="btn btn-success btn-add" type="button">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-                            </span>
+                            <input asp-for="InviteeEmails" class="form-control" name="InviteeEmails" type="text" placeholder="E-mail Address"/>
                         </div>
                     </div>
-                <br>
-                <small>Press <span class="glyphicon glyphicon-plus gs"></span> to add another contact</small>
                 </div>
             </div>
         </div>    
