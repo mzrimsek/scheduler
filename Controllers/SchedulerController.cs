@@ -68,7 +68,7 @@ namespace scheduler.Controllers
         public async Task<IActionResult> ViewCalendar()
         {
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
-            var calendarViewModels = _calendarViewModelGetter.GetByUserId(currentUser.Id);
+            var calendarViewModels = await _calendarViewModelGetter.GetByUserId(currentUser.Id);
 
             return View(calendarViewModels);
         }
