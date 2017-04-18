@@ -114,6 +114,14 @@ namespace scheduler.Controllers
 
         [HttpPost] async Task<IActionResult> DeleteEvent(EventViewModel model)
         {
+            var eventDbModel = _eventRepo.GetById(model.EventId);
+            var emails = _inviteeHelper.GetInviteeEmailsFromView(model);
+            foreach(var inviteeToRemove in emails)
+            {
+                var result = await _inviteeHelper.RemoveInviteeFromEmail(inviteeToRemove, eventDbModel);
+            }
+            _eventRepo.Delete(eventDbModel);
+
             return RedirectToAction("ViewCalendar", "Scheduler");
         }
     }
