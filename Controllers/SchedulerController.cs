@@ -101,7 +101,7 @@ namespace scheduler.Controllers
                 var result = await _inviteeHelper.RemoveInviteeFromEmail(inviteeToRemove, updatedEvent);
             }
 
-            return await ViewCalendar();
+            return RedirectToAction("ViewCalendar", "Scheduler");
         }
     }
 }
