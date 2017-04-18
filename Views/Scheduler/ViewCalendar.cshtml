@@ -23,7 +23,10 @@
             <h2>@calendarEvent.EventTitle</h2>
             @if (calendarEvent.CreatedById == @UserManager.GetUserId(User))
             {
-                <a class="btn btn-primary btn-lg" asp-controller="Scheduler" asp-action="EditEvent" asp-route-eventId="@calendarEvent.EventId">Edit</a>
+                <div class="action-buttons">
+                    <a class="btn btn-primary btn-lg" asp-controller="Scheduler" asp-action="EditEvent" asp-route-eventId="@calendarEvent.EventId">Edit</a>
+                    <a class="btn btn-danger btn-lg" asp-controller="Scheduler" asp-action="RemoveEvent" asp-route-eventId="@calendarEvent.EventId">Remove</a>
+                </div>
             }
         </div>
         <div class="panel-body">
