@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace scheduler.Models.SchedulerViewModels 
+namespace scheduler.Models.SchedulerViewModels
 {
 
     public class EventViewModel 
@@ -14,7 +13,7 @@ namespace scheduler.Models.SchedulerViewModels
         public string EventDescription { get; set; }
 
         [Required]
-        public List<string> InviteeEmails { get; set; }
+        public string InviteeEmails { get; set; }
 
         [Required]
         public string StartDate { get; set; }

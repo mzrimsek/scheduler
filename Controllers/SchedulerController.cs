@@ -43,14 +43,19 @@ namespace scheduler.Controllers
             var eventDbModel = EventModelMapper.MapFrom(currentUser, model);
             var newEvent = _eventRepo.Create(eventDbModel);
 
-            foreach(var email in model.InviteeEmails)
+            var emails = model.InviteeEmails.Split(',');
+            foreach(var email in emails)
             {
-                var inviteeUser = await _userManager.FindByEmailAsync(email);
-                var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, inviteeUser);
-                _inviteeRepo.Create(inviteeDbModel);
+                var trimmedEmail = email.Trim();
+                if(!string.IsNullOrEmpty(trimmedEmail))
+                {
+                    var inviteeUser = await _userManager.FindByEmailAsync(trimmedEmail);
+                    var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, inviteeUser);
+                    _inviteeRepo.Create(inviteeDbModel);
+                }
             }
 
-            return View(model);
+            return RedirectToAction("Index", "Scheduler");
         }
     }
 }
