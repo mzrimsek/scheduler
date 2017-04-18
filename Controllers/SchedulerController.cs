@@ -17,7 +17,7 @@ namespace scheduler.Controllers
         private readonly ILogger _logger;
         private readonly IEventRepository _eventRepo;
         private readonly IInviteeRepository _inviteeRepo;
-        private readonly CalendarViewModelBuilder _calendarVmBuilder;
+        private readonly CalendarEventViewModelBuilder _calendarVmBuilder;
 
         public SchedulerController(UserManager<ApplicationUser> userManager, ILoggerFactory loggerFactory, IEventRepository eventRepo, IInviteeRepository inviteeRepo) 
         {
@@ -25,7 +25,7 @@ namespace scheduler.Controllers
             _logger = loggerFactory.CreateLogger<SchedulerController>();
             _eventRepo = eventRepo;
             _inviteeRepo = inviteeRepo;
-            _calendarVmBuilder = new CalendarViewModelBuilder(eventRepo, inviteeRepo);
+            _calendarVmBuilder = new CalendarEventViewModelBuilder(eventRepo, inviteeRepo);
         }
 
         [HttpGet]
@@ -69,7 +69,7 @@ namespace scheduler.Controllers
         [HttpGet]
         public IActionResult ViewCalendar()
         {
-            var calendarViewModels = new List<CalendarViewModel>();
+            var calendarViewModels = new List<CalendarEventViewModel>();
 
             return View(calendarViewModels);
         }

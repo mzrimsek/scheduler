@@ -5,19 +5,20 @@ using scheduler.Models.SchedulerViewModels;
 
 namespace scheduler.Builders
 {
-    public class CalendarViewModelBuilder
+    public class CalendarEventViewModelBuilder
     {
         private readonly IEventRepository _eventRepo;
         private readonly IInviteeRepository _inviteeRepo;
 
-        public CalendarViewModelBuilder(IEventRepository eventRepo, IInviteeRepository inviteeRepo)
+        public CalendarEventViewModelBuilder(IEventRepository eventRepo, IInviteeRepository inviteeRepo)
         {
             _eventRepo = eventRepo;
             _inviteeRepo = inviteeRepo;
         }
 
-        public CalendarViewModel BuildFrom(string userId)
+        public CalendarEventViewModel BuildFrom(string userId)
         {
+            var eventsForUser = GetEventsForUser(userId);
             
         }
 
