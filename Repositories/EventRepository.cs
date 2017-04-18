@@ -25,17 +25,21 @@ namespace scheduler.Repositories
             return _context.Events.Where(x => x.CreatedById == createdId).ToList();
         }
 
-        public void Create(Event newEvent)
+        public Event Create(Event newEvent)
         {
             _context.Add(newEvent);
             _context.SaveChanges();
+
+            return newEvent;
         }
 
-        public void Update(Event eventToUpdate)
+        public Event Update(Event eventToUpdate)
         {
             var existingEvent = GetById(eventToUpdate.Id);
             existingEvent = eventToUpdate;
             _context.SaveChanges();
+
+            return existingEvent;
         }
     }
 }

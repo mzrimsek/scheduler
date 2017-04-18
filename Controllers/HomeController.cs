@@ -24,6 +24,13 @@ namespace scheduler.Controllers
             return View();
         }
 
+        public IActionResult Schedule()
+        {
+            ViewData["Message"] = "Schedule a Meeting";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();

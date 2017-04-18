@@ -40,6 +40,27 @@ textarea {
     margin: 0 auto;
 }
 
+.glyphicon
+{
+    font-size: 12px;
+}
+
+.contact-container {
+    margin-bottom: 15px;
+}
+
+.date-container {
+    margin-bottom: 15px;
+}
+
+.time-container {
+    margin-bottom: 15px;
+}
+
+.button-container {
+    margin-bottom: 15px;
+}
+
 /* What We Do */
 .what-we-do{
     text-align: center;
@@ -55,10 +76,6 @@ textarea {
     font-family: 'Shadows Into Light Two', cursive;
 }
 
-.password-requirements h4{
-    float: left;
-    color: red;
-}
-.requirement-bullets{
+.password-requirements h4, .requirement-bullets{
     color: red;
 }
