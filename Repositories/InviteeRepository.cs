@@ -34,8 +34,7 @@ namespace scheduler.Repositories
 
         public void Update(Invitee inviteeToUpdate)
         {
-            var existingInvitee = GetById(inviteeToUpdate.Id);
-            existingInvitee = inviteeToUpdate;
+            _context.Update(inviteeToUpdate);
             _context.SaveChanges();
         }
 
