@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using scheduler.Data;
@@ -39,6 +40,12 @@ namespace scheduler.Repositories
             _context.SaveChanges();
 
             return eventToUpdate;
+        }
+
+        public void Delete(Event eventToDelete)
+        {
+            _context.Remove(eventToDelete);
+            _context.SaveChanges();
         }
     }
 }
