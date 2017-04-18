@@ -36,6 +36,7 @@ namespace scheduler.Getters
                 calendarEventViewModels.Add(calendarViewModel);
             }
 
+            //fix how events are ordered
             return calendarEventViewModels.OrderBy(x => x.StartDateTime).ToList();
         }
 

@@ -6,6 +6,7 @@
     ViewData["Title"] = "Your Calendar";
 }
 <h2>Your Calendar</h2>
+<a class="btn btn-primary btn-lg" asp-area="" asp-controller="Scheduler" asp-action="Index">Create a new event</a>
 
 @foreach (CalendarEventViewModel calendarEvent in Model)
 {
