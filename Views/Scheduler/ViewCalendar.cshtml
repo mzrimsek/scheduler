@@ -8,7 +8,7 @@
 <h2>Your Calendar</h2>
 <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Scheduler" asp-action="Index">Create a new event</a>
 
-@foreach (CalendarEventViewModel calendarEvent in Model)
+@foreach (var calendarEvent in Model)
 {
     <div>
         <h3>@calendarEvent.EventTitle</h3>
@@ -25,4 +25,8 @@
             }
         </div>
     </div>
+}
+@if (Model.Count() == 0)
+{
+    <div>You don't seem to have any events to show!</div>
 }
