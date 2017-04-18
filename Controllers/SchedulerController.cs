@@ -49,15 +49,14 @@ namespace scheduler.Controllers
             foreach(var email in emails)
             {
                 var trimmedEmail = email.Trim();
-                if(!string.IsNullOrEmpty(trimmedEmail))
+                if(!string.IsNullOrEmpty(trimmedEmail) && trimmedEmail != currentUser.Email)
                 {
                     var inviteeUser = await _userManager.FindByEmailAsync(trimmedEmail);
                     if(inviteeUser != null)
                     {
                         var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, inviteeUser);
                         _inviteeRepo.Create(inviteeDbModel);
-                    }
-                    
+                    }    
                 }
             }
             
