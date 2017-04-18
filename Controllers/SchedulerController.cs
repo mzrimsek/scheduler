@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +48,7 @@ namespace scheduler.Controllers
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
             var calendarViewModels = await _calendarViewModelGetter.GetByUserId(currentUser.Id);
 
-            return View(calendarViewModels);
+            return View("ViewCalendar", calendarViewModels);
         }
 
         [HttpGet]
@@ -68,22 +69,39 @@ namespace scheduler.Controllers
             var eventDbModel = EventModelMapper.MapFrom(currentUser, model);
             var newEvent = _eventRepo.Create(eventDbModel);
 
-            var emails = model.InviteeEmails.Split(',');
+            var emails = _inviteeHelper.GetInviteeEmailsFromView(model);
             foreach(var email in emails)
             {
-                var trimmedEmail = email.Trim();
-                if(!string.IsNullOrEmpty(trimmedEmail) && trimmedEmail != currentUser.Email)
-                {
-                    var inviteeUser = await _userManager.FindByEmailAsync(trimmedEmail);
-                    if(inviteeUser != null)
-                    {
-                        var inviteeDbModel = InviteeModelMapper.MapFrom(newEvent, inviteeUser);
-                        _inviteeRepo.Create(inviteeDbModel);
-                    }    
-                }
+                var result = await _inviteeHelper.AddInviteeFromEmail(email, currentUser, newEvent);
             }
             
             return RedirectToAction("ViewCalendar", "Scheduler");
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> UpdateEvent(EventViewModel model)
+        {
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var eventDbModel = EventModelMapper.MapFrom(currentUser, model);
+            var updatedEvent = _eventRepo.Update(eventDbModel);
+
+            var newInvitees = _inviteeHelper.GetInviteeEmailsFromView(model).OrderBy(x => x).ToList();
+            var currentInvitees = await _inviteeHelper.GetInviteeEmails(updatedEvent.Id);
+            var sortedCurrentInvitees = currentInvitees.OrderBy(x => x).ToList();
+
+            var inviteesToAdd = newInvitees.Except(sortedCurrentInvitees).ToList();
+            foreach(var inviteeToAdd in inviteesToAdd)
+            {
+                var result = await _inviteeHelper.AddInviteeFromEmail(inviteeToAdd, currentUser, updatedEvent);
+            }
+
+            var inviteesToRemove = sortedCurrentInvitees.Except(newInvitees).ToList();
+            foreach(var inviteeToRemove in inviteesToRemove)
+            {
+                var result = await _inviteeHelper.RemoveInviteeFromEmail(inviteeToRemove, updatedEvent);
+            }
+
+            return await ViewCalendar();
         }
     }
 }

@@ -48,5 +48,10 @@ namespace scheduler.Repositories
             _context.Remove(inviteeToDelete);
             _context.SaveChanges();
         }
+
+        public Invitee GetByEventIdAndUserId(int eventId, string userId)
+        {
+            return _context.Invitees.SingleOrDefault(x => x.EventId == eventId && x.UserId == userId);
+        }
     }
 }
