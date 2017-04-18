@@ -55,6 +55,7 @@ namespace scheduler.Controllers
                 }
             }
 
+            // this should redirect to the calendar page
             return RedirectToAction("Index", "Scheduler");
         }
     }
