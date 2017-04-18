@@ -11,6 +11,7 @@ namespace scheduler.Mappers
         {
             return new Event
             {
+                Id = viewModel.EventId,
                 Title = viewModel.EventTitle,
                 Description = viewModel.EventDescription,
                 CreatedById = currentUser.Id,
@@ -18,7 +19,6 @@ namespace scheduler.Mappers
                 StartTime = GetFullDateTime(viewModel.StartDate, viewModel.StartTime),
                 EndTime = GetFullDateTime(viewModel.EndDate, viewModel.EndTime)
             };
-            
         }
 
         private static DateTime GetFullDateTime(string date, string time)

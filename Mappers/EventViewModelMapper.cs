@@ -12,6 +12,7 @@ namespace scheduler.Mappers
 
             return new EventViewModel
             {
+                EventId = eventModel.Id,
                 EventTitle = eventModel.Title,
                 EventDescription = eventModel.Description,
                 InviteeEmails = inviteeEmailList,
