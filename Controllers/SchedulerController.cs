@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using scheduler.Builders;
 using scheduler.Interfaces;
 using scheduler.Mappers;
 using scheduler.Models;
-using scheduler.Models.DatabaseModels;
 using scheduler.Models.SchedulerViewModels;
 
 namespace scheduler.Controllers
@@ -17,6 +17,7 @@ namespace scheduler.Controllers
         private readonly ILogger _logger;
         private readonly IEventRepository _eventRepo;
         private readonly IInviteeRepository _inviteeRepo;
+        private readonly CalendarViewModelBuilder _calendarVmBuilder;
 
         public SchedulerController(UserManager<ApplicationUser> userManager, ILoggerFactory loggerFactory, IEventRepository eventRepo, IInviteeRepository inviteeRepo) 
         {
@@ -24,6 +25,7 @@ namespace scheduler.Controllers
             _logger = loggerFactory.CreateLogger<SchedulerController>();
             _eventRepo = eventRepo;
             _inviteeRepo = inviteeRepo;
+            _calendarVmBuilder = new CalendarViewModelBuilder(eventRepo, inviteeRepo);
         }
 
         [HttpGet]
@@ -65,22 +67,11 @@ namespace scheduler.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ViewCalendar()
+        public IActionResult ViewCalendar()
         {
-            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
-            var eventsForUser = _eventRepo.GetByCreatedId(currentUser.Id);
+            var calendarViewModels = new List<CalendarViewModel>();
 
-            var inviteesForUser = _inviteeRepo.GetByUserId(currentUser.Id);
-            var eventsUserInvitedTo = new List<Event>();
-            foreach (var invitee in inviteesForUser)
-            {
-                var events = _eventRepo.GetById(invitee.EventId);
-                eventsUserInvitedTo.Add(events);
-            }
-
-            eventsForUser.AddRange(eventsUserInvitedTo);
-
-            return View(eventsForUser);
+            return View(calendarViewModels);
         }
     }
 }
