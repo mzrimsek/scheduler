@@ -10,6 +10,7 @@ namespace scheduler.Mappers
         {
             return new CalendarEventViewModel
             {
+                EventId = calendarEvent.Id,
                 EventTitle = calendarEvent.Title,
                 EventDescription = calendarEvent.Description,
                 StartDateTime = calendarEvent.StartTime.ToString(),
