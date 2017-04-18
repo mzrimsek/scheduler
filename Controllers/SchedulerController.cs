@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using scheduler.Getters;
+using scheduler.Helpers;
 using scheduler.Interfaces;
 using scheduler.Mappers;
 using scheduler.Models;
@@ -17,6 +18,7 @@ namespace scheduler.Controllers
         private readonly IEventRepository _eventRepo;
         private readonly IInviteeRepository _inviteeRepo;
         private readonly CalendarEventViewModelGetter _calendarViewModelGetter;
+        private readonly InviteeHelper _inviteeHelper;
 
         public SchedulerController(UserManager<ApplicationUser> userManager, ILoggerFactory loggerFactory, IEventRepository eventRepo, IInviteeRepository inviteeRepo) 
         {
@@ -25,6 +27,7 @@ namespace scheduler.Controllers
             _eventRepo = eventRepo;
             _inviteeRepo = inviteeRepo;
             _calendarViewModelGetter = new CalendarEventViewModelGetter(eventRepo, inviteeRepo, userManager);
+            _inviteeHelper = new InviteeHelper(inviteeRepo, userManager);
         }
 
         [HttpGet]
@@ -70,6 +73,15 @@ namespace scheduler.Controllers
             var calendarViewModels = await _calendarViewModelGetter.GetByUserId(currentUser.Id);
 
             return View(calendarViewModels);
+        }
+
+        [HttpGet]
+        public IActionResult EditEvent(int eventId)
+        {
+            var eventModel = _eventRepo.GetById(eventId);
+            var eventInviteesEmails = _inviteeHelper.GetInviteeEmails(eventId);
+
+            return View();
         }
     }
 }

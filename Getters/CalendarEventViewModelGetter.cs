@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using scheduler.Helpers;
 using scheduler.Interfaces;
 using scheduler.Mappers;
 using scheduler.Models;
@@ -15,12 +16,14 @@ namespace scheduler.Getters
         private readonly IEventRepository _eventRepo;
         private readonly IInviteeRepository _inviteeRepo;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly InviteeHelper _inviteeHelper;
 
         public CalendarEventViewModelGetter(IEventRepository eventRepo, IInviteeRepository inviteeRepo, UserManager<ApplicationUser> userManager)
         {
             _eventRepo = eventRepo;
             _inviteeRepo = inviteeRepo;
             _userManager = userManager;
+            _inviteeHelper = new InviteeHelper(inviteeRepo, userManager);
         }
 
         public async Task<List<CalendarEventViewModel>> GetByUserId(string userId)
@@ -30,7 +33,7 @@ namespace scheduler.Getters
             var eventsForUser = GetEventsForUser(userId);
             foreach(var eventModel in eventsForUser)
             {
-                var inviteeUserEmails = await GetInviteeEmails(eventModel.Id);
+                var inviteeUserEmails = await _inviteeHelper.GetInviteeEmails(eventModel.Id);
 
                 var calendarViewModel = CalendarEventViewModelMapper.MapFrom(eventModel, inviteeUserEmails);
                 calendarEventViewModels.Add(calendarViewModel);
@@ -54,19 +57,6 @@ namespace scheduler.Getters
 
             eventsForUser.AddRange(eventsUserInvitedTo);
             return eventsForUser;
-        }
-
-        private async Task<List<string>> GetInviteeEmails(int eventId)
-        {
-            var invitees = _inviteeRepo.GetByEventId(eventId);
-            var inviteeUserEmails = new List<string>();
-            foreach(var invitee in invitees)
-            {
-                var inviteeUser = await _userManager.FindByIdAsync(invitee.UserId);
-                inviteeUserEmails.Add(inviteeUser.Email);
-            }
-
-            return inviteeUserEmails;
         }
     }
 }
