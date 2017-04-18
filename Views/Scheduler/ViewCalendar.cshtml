@@ -1,0 +1,27 @@
+@using scheduler.Models.SchedulerViewModels
+@using System.Collections.Generic
+@model List<CalendarEventViewModel>
+
+@{
+    ViewData["Title"] = "Your Calendar";
+}
+<h2>Your Calendar</h2>
+
+@foreach (CalendarEventViewModel calendarEvent in Model)
+{
+    <div>
+        <h3>@calendarEvent.EventTitle</h3>
+        <h4>@calendarEvent.EventDescription</h4>
+        <div>
+            <div>Start: @calendarEvent.StartDateTime</div>
+            <div>End: @calendarEvent.EndDateTime</div>
+        </div>
+        <div>
+            <h3>Invitees</h3>
+            @foreach (var email in calendarEvent.InviteeEmails)
+            {
+                <div>@email</div>
+            }
+        </div>
+    </div>
+}
