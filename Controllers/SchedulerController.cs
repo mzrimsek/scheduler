@@ -41,6 +41,26 @@ namespace scheduler.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ViewCalendar()
+        {
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var calendarViewModels = await _calendarViewModelGetter.GetByUserId(currentUser.Id);
+
+            return View(calendarViewModels);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditEvent(int eventId)
+        {
+            var eventModel = _eventRepo.GetById(eventId);
+            var eventInviteesEmails = await _inviteeHelper.GetInviteeEmails(eventId);
+
+            var eventViewModel = EventViewModelMapper.MapFrom(eventModel, eventInviteesEmails);
+
+            return View(eventViewModel);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateEvent(EventViewModel model) 
         {
@@ -64,26 +84,6 @@ namespace scheduler.Controllers
             }
             
             return RedirectToAction("ViewCalendar", "Scheduler");
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> ViewCalendar()
-        {
-            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
-            var calendarViewModels = await _calendarViewModelGetter.GetByUserId(currentUser.Id);
-
-            return View(calendarViewModels);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> EditEvent(int eventId)
-        {
-            var eventModel = _eventRepo.GetById(eventId);
-            var eventInviteesEmails = await _inviteeHelper.GetInviteeEmails(eventId);
-
-            var eventViewModel = EventViewModelMapper.MapFrom(eventModel, eventInviteesEmails);
-
-            return View(eventViewModel);
         }
     }
 }
