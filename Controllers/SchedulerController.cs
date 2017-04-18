@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -5,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using scheduler.Interfaces;
 using scheduler.Mappers;
 using scheduler.Models;
+using scheduler.Models.DatabaseModels;
 using scheduler.Models.SchedulerViewModels;
 
 namespace scheduler.Controllers
@@ -60,6 +62,25 @@ namespace scheduler.Controllers
 
             // this should redirect to the calendar page
             return RedirectToAction("Index", "Scheduler");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ViewCalendar()
+        {
+            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var eventsForUser = _eventRepo.GetByCreatedId(currentUser.Id);
+
+            var inviteesForUser = _inviteeRepo.GetByUserId(currentUser.Id);
+            var eventsUserInvitedTo = new List<Event>();
+            foreach (var invitee in inviteesForUser)
+            {
+                var events = _eventRepo.GetById(invitee.EventId);
+                eventsUserInvitedTo.Add(events);
+            }
+
+            eventsForUser.AddRange(eventsUserInvitedTo);
+
+            return View(eventsForUser);
         }
     }
 }
