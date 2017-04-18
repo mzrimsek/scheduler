@@ -5,27 +5,45 @@
 @{
     ViewData["Title"] = "Your Calendar";
 }
-<h2>Your Calendar</h2>
-<a class="btn btn-primary btn-lg" asp-area="" asp-controller="Scheduler" asp-action="Index">Create a new event</a>
+<div class="page-header calendar-header">
+    <h1>Your Calendar</h1>
+    <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Scheduler" asp-action="Index">Create a new event</a>
+</div>
 
+<div class="calendar-event">
 @foreach (var calendarEvent in Model)
 {
-    <div>
-        <h3>@calendarEvent.EventTitle</h3>
-        <h4>@calendarEvent.EventDescription</h4>
-        <div>
-            <div>Start: @calendarEvent.StartDateTime</div>
-            <div>End: @calendarEvent.EndDateTime</div>
+    <div class="calendar-event panel panel-default">
+        <div class="panel-heading">
+            <h2>@calendarEvent.EventTitle</h2>
         </div>
-        <div>
-            <h3>Invitees</h3>
-            @foreach (var email in calendarEvent.InviteeEmails)
-            {
-                <div>@email</div>
-            }
+        <div class="panel-body">
+            <div class="container">
+                <div class="row"> 
+                    <div class="col-md-6">
+                        <h3>About: @calendarEvent.EventDescription</h3>
+                        <div class="event-times">
+                            <div>Start: @calendarEvent.StartDateTime</div>
+                            <div>End: @calendarEvent.EndDateTime</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="event-invitees">
+                            <h3>Invitees</h3>
+                            <ul>
+                                @foreach (var email in calendarEvent.InviteeEmails)
+                                {
+                                    <li>@email</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 }
+</div>
 @if (Model.Count() == 0)
 {
     <div>You don't seem to have any events to show!</div>
