@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using scheduler.Interfaces;
@@ -35,7 +36,7 @@ namespace scheduler.Getters
                 calendarEventViewModels.Add(calendarViewModel);
             }
 
-            return calendarEventViewModels;
+            return calendarEventViewModels.OrderBy(x => x.StartDateTime).ToList();
         }
 
         private List<Event> GetEventsForUser(string userId)
