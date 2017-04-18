@@ -76,12 +76,14 @@ namespace scheduler.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditEvent(int eventId)
+        public async Task<IActionResult> EditEvent(int eventId)
         {
             var eventModel = _eventRepo.GetById(eventId);
-            var eventInviteesEmails = _inviteeHelper.GetInviteeEmails(eventId);
+            var eventInviteesEmails = await _inviteeHelper.GetInviteeEmails(eventId);
 
-            return View();
+            var eventViewModel = EventViewModelMapper.MapFrom(eventModel, eventInviteesEmails);
+
+            return View(eventViewModel);
         }
     }
 }

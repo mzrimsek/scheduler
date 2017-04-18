@@ -7,7 +7,7 @@
 }
 <div class="page-header calendar-header">
     <h1>Your Calendar</h1>
-    <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Scheduler" asp-action="Index">Create a new event</a>
+    <a class="btn btn-primary btn-lg" asp-controller="Scheduler" asp-action="Index">Create a new event</a>
 </div>
 
 <div class="calendar-event">
@@ -16,6 +16,7 @@
     <div class="calendar-event panel panel-default">
         <div class="panel-heading">
             <h2>@calendarEvent.EventTitle</h2>
+            <a asp-controller="Scheduler" asp-action="EditEvent" asp-route-id="@calendarEvent.EventId">Edit</a>
         </div>
         <div class="panel-body">
             <div class="container">
@@ -36,6 +37,10 @@
                                     <li>@email</li>
                                 }
                             </ul>
+                            @if (calendarEvent.InviteeEmails.Count() == 0)
+                            {
+                                <div>No invitees!</div>
+                            }
                         </div>
                     </div>
                 </div>
