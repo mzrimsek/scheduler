@@ -43,5 +43,11 @@ namespace scheduler.Repositories
         {
             return _context.Invitees.Where(x => x.UserId == userId).ToList();
         }
+
+        public void Delete(Invitee inviteeToDelete)
+        {
+            _context.Remove(inviteeToDelete);
+            _context.SaveChanges();
+        }
     }
 }

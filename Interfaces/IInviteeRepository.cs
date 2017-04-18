@@ -10,5 +10,6 @@ namespace scheduler.Interfaces
         List<Invitee> GetByEventId(int eventId);
         void Create(Invitee newInvitee);
         void Update(Invitee inviteeToUpdate);
+        void Delete(Invitee inviteeToDelete);
     }
 }
