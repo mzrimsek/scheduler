@@ -29,14 +29,7 @@ namespace scheduler.Getters
             var eventsForUser = GetEventsForUser(userId);
             foreach(var eventModel in eventsForUser)
             {
-                var invitees = _inviteeRepo.GetByEventId(eventModel.Id);
-                var inviteeUserEmails = new List<string>();
-                foreach(var invitee in invitees)
-                {
-                    var inviteeUser = await _userManager.FindByIdAsync(invitee.UserId);
-                    inviteeUserEmails.Add(inviteeUser.Email);
-                }
-
+                var inviteeUserEmails = await GetInviteeEmails(eventModel.Id);
 
                 var calendarViewModel = CalendarEventViewModelMapper.MapFrom(eventModel, inviteeUserEmails);
                 calendarEventViewModels.Add(calendarViewModel);
@@ -59,6 +52,19 @@ namespace scheduler.Getters
 
             eventsForUser.AddRange(eventsUserInvitedTo);
             return eventsForUser;
+        }
+
+        private async Task<List<string>> GetInviteeEmails(int eventId)
+        {
+            var invitees = _inviteeRepo.GetByEventId(eventId);
+            var inviteeUserEmails = new List<string>();
+            foreach(var invitee in invitees)
+            {
+                var inviteeUser = await _userManager.FindByIdAsync(invitee.UserId);
+                inviteeUserEmails.Add(inviteeUser.Email);
+            }
+
+            return inviteeUserEmails;
         }
     }
 }
