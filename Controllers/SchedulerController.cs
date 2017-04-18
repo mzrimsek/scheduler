@@ -24,7 +24,7 @@ namespace scheduler.Controllers
             _logger = loggerFactory.CreateLogger<SchedulerController>();
             _eventRepo = eventRepo;
             _inviteeRepo = inviteeRepo;
-            _calendarViewModelGetter = new CalendarEventViewModelGetter(eventRepo, inviteeRepo);
+            _calendarViewModelGetter = new CalendarEventViewModelGetter(eventRepo, inviteeRepo, userManager);
         }
 
         [HttpGet]

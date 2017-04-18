@@ -1,5 +1,9 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using scheduler.Interfaces;
+using scheduler.Mappers;
+using scheduler.Models;
 using scheduler.Models.DatabaseModels;
 using scheduler.Models.SchedulerViewModels;
 
@@ -9,18 +13,34 @@ namespace scheduler.Getters
     {
         private readonly IEventRepository _eventRepo;
         private readonly IInviteeRepository _inviteeRepo;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public CalendarEventViewModelGetter(IEventRepository eventRepo, IInviteeRepository inviteeRepo)
+        public CalendarEventViewModelGetter(IEventRepository eventRepo, IInviteeRepository inviteeRepo, UserManager<ApplicationUser> userManager)
         {
             _eventRepo = eventRepo;
             _inviteeRepo = inviteeRepo;
+            _userManager = userManager;
         }
 
-        public List<CalendarEventViewModel> GetByUserId(string userId)
+        public async Task<List<CalendarEventViewModel>> GetByUserId(string userId)
         {
             var calendarEventViewModels = new List<CalendarEventViewModel>();
 
             var eventsForUser = GetEventsForUser(userId);
+            foreach(var eventModel in eventsForUser)
+            {
+                var invitees = _inviteeRepo.GetByEventId(eventModel.Id);
+                var inviteeUserEmails = new List<string>();
+                foreach(var invitee in invitees)
+                {
+                    var inviteeUser = await _userManager.FindByIdAsync(invitee.UserId);
+                    inviteeUserEmails.Add(inviteeUser.Email);
+                }
+
+
+                var calendarViewModel = CalendarEventViewModelMapper.MapFrom(eventModel, inviteeUserEmails);
+                calendarEventViewModels.Add(calendarViewModel);
+            }
 
             return calendarEventViewModels;
         }
