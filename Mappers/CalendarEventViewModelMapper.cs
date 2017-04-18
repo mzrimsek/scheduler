@@ -11,6 +11,7 @@ namespace scheduler.Mappers
             return new CalendarEventViewModel
             {
                 EventId = calendarEvent.Id,
+                CreatedById = calendarEvent.CreatedById,
                 EventTitle = calendarEvent.Title,
                 EventDescription = calendarEvent.Description,
                 StartDateTime = calendarEvent.StartTime.ToString(),

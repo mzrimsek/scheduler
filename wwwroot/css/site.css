@@ -81,7 +81,7 @@ textarea {
 }
 
 /* Calendar Page */
-.calendar-header {
+.calendar-header, .calendar-event-header {
     display: flex;
     justify-content: space-between;
     align-items: center;

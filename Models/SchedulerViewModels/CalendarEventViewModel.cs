@@ -5,6 +5,7 @@ namespace scheduler.Models.SchedulerViewModels
     public class CalendarEventViewModel
     {
         public int EventId { get; set; }
+        public string CreatedById { get; set; }
         public string EventTitle { get; set; }
         public string EventDescription { get; set; }
         public string StartDateTime { get; set; }

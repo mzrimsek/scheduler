@@ -1,5 +1,10 @@
-@using scheduler.Models.SchedulerViewModels
 @using System.Collections.Generic
+@using Microsoft.AspNetCore.Identity
+@using scheduler.Models
+@using scheduler.Models.SchedulerViewModels
+
+@inject UserManager<ApplicationUser> UserManager
+
 @model List<CalendarEventViewModel>
 
 @{
@@ -14,9 +19,12 @@
 @foreach (var calendarEvent in Model)
 {
     <div class="calendar-event panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading calendar-event-header">
             <h2>@calendarEvent.EventTitle</h2>
-            <a asp-controller="Scheduler" asp-action="EditEvent" asp-route-eventId="@calendarEvent.EventId">Edit</a>
+            @if (calendarEvent.CreatedById == @UserManager.GetUserId(User))
+            {
+                <a class="btn btn-primary btn-lg" asp-controller="Scheduler" asp-action="EditEvent" asp-route-eventId="@calendarEvent.EventId">Edit</a>
+            }
         </div>
         <div class="panel-body">
             <div class="container">
