@@ -35,11 +35,10 @@ namespace scheduler.Repositories
 
         public Event Update(Event eventToUpdate)
         {
-            var existingEvent = GetById(eventToUpdate.Id);
-            existingEvent = eventToUpdate;
+            _context.Update(eventToUpdate);
             _context.SaveChanges();
 
-            return existingEvent;
+            return eventToUpdate;
         }
     }
 }
