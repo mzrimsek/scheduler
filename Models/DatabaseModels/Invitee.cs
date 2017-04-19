@@ -12,7 +12,7 @@ namespace scheduler.Models.DatabaseModels
         public int EventId { get; set; }
         [Required]
         [ForeignKeyAttribute("ApplicationUser")]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         [Required]
         public bool Accepted { get; set; }
     }

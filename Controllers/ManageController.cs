@@ -40,7 +40,7 @@ namespace scheduler.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : "";
 
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return View("Error");
@@ -67,7 +67,7 @@ namespace scheduler.Controllers
             {
                 return View(model);
             }
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             if (user != null)
             {
                 var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
@@ -98,7 +98,7 @@ namespace scheduler.Controllers
                 return View(model);
             }
 
-            var user = await GetCurrentUserAsync();
+            var user = await _userManager.GetUserAsync(User);
             if (user != null)
             {
                 var result = await _userManager.AddPasswordAsync(user, model.NewPassword);
@@ -126,11 +126,6 @@ namespace scheduler.Controllers
             ChangePasswordSuccess,
             SetPasswordSuccess,
             Error
-        }
-
-        private Task<ApplicationUser> GetCurrentUserAsync()
-        {
-            return _userManager.GetUserAsync(HttpContext.User);
         }
     }
 }

@@ -177,7 +177,8 @@ namespace scheduler.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CreatedById");
+                    b.Property<string>("CreatedById")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreatedOn");
 
@@ -204,7 +205,8 @@ namespace scheduler.Data.Migrations
 
                     b.Property<int>("EventId");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

@@ -40,6 +40,27 @@ textarea {
     margin: 0 auto;
 }
 
+.glyphicon
+{
+    font-size: 12px;
+}
+
+.contact-container {
+    margin-bottom: 15px;
+}
+
+.date-container {
+    margin-bottom: 15px;
+}
+
+.time-container {
+    margin-bottom: 15px;
+}
+
+.button-container {
+    margin-bottom: 15px;
+}
+
 /* What We Do */
 .what-we-do{
     text-align: center;
@@ -55,10 +76,13 @@ textarea {
     font-family: 'Shadows Into Light Two', cursive;
 }
 
-.password-requirements h4{
-    float: left;
+.password-requirements h4, .requirement-bullets{
     color: red;
 }
-.requirement-bullets{
-    color: red;
+
+/* Calendar Page */
+.calendar-header, .calendar-event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

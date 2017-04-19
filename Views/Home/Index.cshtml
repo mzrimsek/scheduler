@@ -1,48 +1,59 @@
 @{
-    ViewData["Title"] = "Home Page";
+ViewData["Title"] = "Home Page";
 }
 
-    <header class="business-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="tagline">Break free from manual meetings.</h1>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <hr>
-
-    <div class="what-we-do">
-        <h2>What We Do</h2>
-            <p>We make it easier than ever to send calendar invites for your meetings.</p>
-            <p>You give us your attendees emails, and we send you the next three times all of their calendar's line up.</p>
-            <p>
-        <a class="btn btn-primary btn-lg" href="#">Schedule a Meeting &raquo;</a>
-            </p>
-    </div>
-
+<header class="business-header">
     <div class="container">
-
-        <hr>
-
         <div class="row">
-            <div class="col-sm-4 icon-image">
-                <img class="img-circle img-responsive img-center" src="~/images/email.svg" alt="">
-                <h2>Pick People</h2>
-                <p>Enter email addresses of your attendees.</p>
-            </div>
-            <div class="col-sm-4 icon-image">
-                <img class="img-circle img-responsive img-center" src="~/images/clock.svg" alt="">
-                <h2>Pick a Time</h2>
-                <p>The app will return the next 3 available times that all attendees are available.</p>
-            </div>
-            <div class="col-sm-4 icon-image">
-                <img class="img-circle img-responsive img-center" src="~/images/presentation.svg" alt="">
-                <h2>Schedule Meeting</h2>
-                <p>Meet with your attendees!</p>
+            <div class="col-lg-12">
+                <h1 class="tagline">Break free from manual meetings.</h1>
             </div>
         </div>
-
     </div>
+</header>
+
+<hr>
+<div class="row">
+    <div class="col-sm-8">
+        <h2>What We Do</h2>
+        <p>We make it easy to schedule events with your coworkers.</p>
+        <p>Fill in the attendee's email's and we will automatically update everyone's calendars to show the upcoming event.</p>
+        <p>
+            <a class="btn btn-primary btn-lg" asp-controller="Scheduler" asp-action="Index">Schedule a Meeting &raquo;</a>
+        </p>
+    </div>
+    <div class="col-sm-4">
+        <h2>We're local!</h2>
+        <address>
+            <strong>CAPSTONE - Scheduler</strong>
+            <br>1234 Kent St
+            <br>Kent, OH 44240
+            <br>
+        </address>
+        <address>
+            <abbr title="Phone">P:</abbr>(555) 328-7448
+            <br>
+        </address>
+    </div>
+</div>
+
+<div class="container">
+    <hr>
+    <div class="row">
+        <div class="col-sm-4 icon-image">
+            <img class="img-circle img-responsive img-center" src="~/images/email.svg" alt="">
+            <h2>Pick People</h2>
+            <p>Enter email addresses of your attendees.</p>
+        </div>
+        <div class="col-sm-4 icon-image">
+            <img class="img-circle img-responsive img-center" src="~/images/clock.svg" alt="">
+            <h2>Pick a Time</h2>
+            <p>Select the time and date for the meeting.</p>
+        </div>
+        <div class="col-sm-4 icon-image">
+            <img class="img-circle img-responsive img-center" src="~/images/presentation.svg" alt="">
+            <h2>Schedule Meeting</h2>
+            <p>Meet with your attendees!</p>
+        </div>
+    </div>
+</div>
