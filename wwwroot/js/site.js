@@ -13,10 +13,14 @@ $( document ).ready(function() {
 
     $("#datetimepicker1").on("dp.change", function (e) {
         $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+        $('#datetimepicker3').data("DateTimePicker").clear();
+        $('#datetimepicker4').data("DateTimePicker").clear()
     });
     
     $("#datetimepicker2").on("dp.change", function (e) {
         $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+        $('#datetimepicker3').data("DateTimePicker").clear();
+        $('#datetimepicker4').data("DateTimePicker").clear()
     });
 
     //times
@@ -37,10 +41,23 @@ $( document ).ready(function() {
     });
 
    $('#datetimepicker3').on("dp.change", function(e) {
-            $('#datetimepicker4').data("DateTimePicker").minDate(e.date);
+       if($("#startDate").val() == $("#endDate").val())
+       {
+           $('#datetimepicker4').data("DateTimePicker").minDate(e.date);
+       } else {
+           $('#datetimepicker4').data("DateTimePicker").minDate(false);
+       }
     });
 
     $('#datetimepicker4').on("dp.change", function(e) {
-           $('#datetimepicker3').data("DateTimePicker").maxDate(e.date);
+        if($("#startDate").val() == $("#endDate").val())
+        {
+            $('#datetimepicker3').data("DateTimePicker").maxDate(e.date);
+        } else {
+            $('#datetimepicker3').data("DateTimePicker").maxDate(false);
+        }
     });
+
+    
+
 });
