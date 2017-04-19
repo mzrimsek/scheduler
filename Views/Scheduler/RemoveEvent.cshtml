@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Remove Event";
 }
-<h2>Are you sure you want to remove @Model.EventTitle?</h2>
+<h2>Are you sure you want to remove "@Model.EventTitle"?</h2>
 
 <form asp-controller="Scheduler" asp-action="DeleteEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
     @Html.HiddenFor(model => model.EventId)
