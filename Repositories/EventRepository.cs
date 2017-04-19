@@ -4,7 +4,7 @@ using scheduler.Data;
 using scheduler.Interfaces;
 using scheduler.Models.DatabaseModels;
 
-namespace scheduler.Repositories 
+namespace scheduler.Repositories
 {
     public class EventRepository : IEventRepository
     {
@@ -35,11 +35,16 @@ namespace scheduler.Repositories
 
         public Event Update(Event eventToUpdate)
         {
-            var existingEvent = GetById(eventToUpdate.Id);
-            existingEvent = eventToUpdate;
+            _context.Update(eventToUpdate);
             _context.SaveChanges();
 
-            return existingEvent;
+            return eventToUpdate;
+        }
+
+        public void Delete(Event eventToDelete)
+        {
+            _context.Remove(eventToDelete);
+            _context.SaveChanges();
         }
     }
 }

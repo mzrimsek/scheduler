@@ -1,0 +1,17 @@
+@using Microsoft.AspNetCore.Http
+@model scheduler.Models.SchedulerViewModels.EventViewModel
+
+@{
+    ViewData["Title"] = "Remove Event";
+}
+<h2>Are you sure you want to remove "@Model.EventTitle"?</h2>
+
+<form asp-controller="Scheduler" asp-action="DeleteEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+    @Html.HiddenFor(model => model.EventId)
+
+    <div class="button-container">
+        <input class="btn btn-danger" type="submit" value="Remove">
+        <a class="btn btn-default" asp-controller="Scheduler" asp-action="ViewCalendar">Cancel</a>
+    </div>
+</form>
+

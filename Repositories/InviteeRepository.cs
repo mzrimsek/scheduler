@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using scheduler.Data;
@@ -33,9 +34,24 @@ namespace scheduler.Repositories
 
         public void Update(Invitee inviteeToUpdate)
         {
-            var existingInvitee = GetById(inviteeToUpdate.Id);
-            existingInvitee = inviteeToUpdate;
+            _context.Update(inviteeToUpdate);
             _context.SaveChanges();
+        }
+
+        public List<Invitee> GetByUserId(string userId)
+        {
+            return _context.Invitees.Where(x => x.UserId == userId).ToList();
+        }
+
+        public void Delete(Invitee inviteeToDelete)
+        {
+            _context.Remove(inviteeToDelete);
+            _context.SaveChanges();
+        }
+
+        public Invitee GetByEventIdAndUserId(int eventId, string userId)
+        {
+            return _context.Invitees.SingleOrDefault(x => x.EventId == eventId && x.UserId == userId);
         }
     }
 }
