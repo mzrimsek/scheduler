@@ -43,6 +43,7 @@ namespace scheduler.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateEvent(EventViewModel model) 
         {
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
@@ -77,6 +78,7 @@ namespace scheduler.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateEvent(EventViewModel model)
         {
             var currentUser = await _userManager.GetUserAsync(HttpContext.User);
@@ -112,7 +114,8 @@ namespace scheduler.Controllers
             return View(eventViewModel);
         }
 
-        [HttpPost] 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteEvent(EventViewModel model)
         {
             var eventDbModel = _eventRepo.GetById(model.EventId);
