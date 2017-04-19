@@ -34,8 +34,9 @@ namespace scheduler.Getters
             foreach(var eventModel in eventsForUser)
             {
                 var inviteeUserEmails = await _inviteeHelper.GetInviteeEmails(eventModel.Id);
+                var eventOwner = await _userManager.FindByIdAsync(eventModel.CreatedById);
 
-                var calendarViewModel = CalendarEventViewModelMapper.MapFrom(eventModel, inviteeUserEmails);
+                var calendarViewModel = CalendarEventViewModelMapper.MapFrom(eventModel, eventOwner, inviteeUserEmails);
                 calendarEventViewModels.Add(calendarViewModel);
             }
 
