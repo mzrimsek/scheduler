@@ -9,5 +9,6 @@ namespace scheduler.Interfaces
         List<Event> GetByCreatedId(string createdId);
         Event Create(Event newEvent);
         Event Update(Event eventToUpdate);
+        void Delete(Event eventToDelete);
     }
 }
