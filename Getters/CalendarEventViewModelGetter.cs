@@ -56,7 +56,7 @@ namespace scheduler.Getters
             }
 
             eventsForUser.AddRange(eventsUserInvitedTo);
-            return eventsForUser;
+            return eventsForUser.Where(x => x != null).ToList();
         }
     }
 }

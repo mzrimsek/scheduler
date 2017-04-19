@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using scheduler.Interfaces;
@@ -73,7 +74,13 @@ namespace scheduler.Helpers
                 return new List<string>();
             }
             var emails = model.InviteeEmails.Split(',');
-            return new List<string>(emails);
+            var emailsAsList = new List<string>(emails);
+            var trimmedEmails = new List<string>();
+            foreach(var email in emailsAsList)
+            {
+                trimmedEmails.Add(email.Trim());
+            }
+            return trimmedEmails.Distinct().ToList();
         }
     }
 }
