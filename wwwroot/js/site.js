@@ -24,15 +24,16 @@ $(function () {
     $startTime1.datetimepicker({
         format: 'HH:mm',
         useCurrent: false,
-        minDate: moment({h:08, m:01}),
-        maxDate: moment({h:18, m:01}),
+        minDate: moment({h:00, m:01}),
+        maxDate: moment({h:23, m:45}),
         stepping: 15
     });
 
     $endTime1.datetimepicker({
         format: 'HH:mm',
-        minDate: moment({h:08, m:01}),
-        maxDate: moment({h:18, m:01}),
+        useCurrent: false,
+        minDate: moment({h:00, m:01}),
+        maxDate: moment({h:23, m:45}),
         stepping: 15
     });
 
@@ -41,12 +42,12 @@ $(function () {
     });
 
     $endTime1.on("dp.change", function(e) {
-        $startTime1.data("DateTimePicker").maxDate(e.date);
+       //$endTime1.data("DateTimePicker").maxDate(e.defaultDate);
     });
 
     $endTime1.on("dp.show", function(e) {
-        if (!$endTime1.data("DateTimePicker").maxDate(e.date)) {
+       // if (!$endTime1.data("DateTimePicker").maxDate(e.date)) {
             var defaultDate = $startTime1.data("DateTimePicker").date().add(15, 'minutes');
-        }
+        //}
     });
 });
