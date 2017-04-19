@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ using scheduler.Models.SchedulerViewModels;
 
 namespace scheduler.Controllers
 {
+    [Authorize]
     public class SchedulerController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -34,7 +36,7 @@ namespace scheduler.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var user = await _userManager.GetUserAsync(User);
             
             if (user != null) {
                 return View(); 
@@ -46,7 +48,7 @@ namespace scheduler.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateEvent(EventViewModel model) 
         {
-            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var currentUser = await _userManager.GetUserAsync(User);
             var eventDbModel = EventModelMapper.MapFrom(currentUser, model);
             var newEvent = _eventRepo.Create(eventDbModel);
 
@@ -62,7 +64,7 @@ namespace scheduler.Controllers
         [HttpGet]
         public async Task<IActionResult> ViewCalendar()
         {
-            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var currentUser = await _userManager.GetUserAsync(User);
             var calendarViewModels = await _calendarViewModelGetter.GetByUserId(currentUser.Id);
             return View("ViewCalendar", calendarViewModels);
         }
@@ -81,7 +83,7 @@ namespace scheduler.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateEvent(EventViewModel model)
         {
-            var currentUser = await _userManager.GetUserAsync(HttpContext.User);
+            var currentUser = await _userManager.GetUserAsync(User);
             var eventDbModel = EventModelMapper.MapFrom(currentUser, model);
             var updatedEvent = _eventRepo.Update(eventDbModel);
 
