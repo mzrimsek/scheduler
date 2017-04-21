@@ -1,88 +1,30 @@
-body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+html {
+  box-sizing: border-box;
 }
 
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-/* Top Banner */
-.business-header {
-    height: 400px;
-    background-size: cover !important;
-}
-
-.business-header .tagline{
-    opacity: 1 !important;
-    padding-top: 150px;
-    text-align: center;
-    color: black;
-    font-size: 55px;
-    font-weight: lighter;
-    font-family: 'Font Name', Josefin Sans;
-}
-
-/* Icon images */
-.icon-image {
-    text-align: center;
-}
-
-.icon-image img{
-    max-width: 250px;
-    margin: 0 auto;
-}
-
-.glyphicon
-{
-    font-size: 12px;
-}
-
-.contact-container {
-    margin-bottom: 15px;
-}
-
-.date-container {
-    margin-bottom: 15px;
-}
-
-.time-container {
-    margin-bottom: 15px;
-}
-
-.button-container {
-    margin-bottom: 15px;
-}
-
-/* What We Do */
-.what-we-do{
-    text-align: center;
-}
-
-.what-we-do h2{
-    font-size: 55px;
-    font-family: 'Shadows Into Light Two', cursive;
-}
-
-/* H2 headers */
-.row h2{
-    font-family: 'Shadows Into Light Two', cursive;
-}
-
-.password-requirements h4, .requirement-bullets{
-    color: red;
-}
-
-/* Calendar Page */
-.calendar-header, .calendar-event-header {
+.mdl-layout__header .mdl-navigation .logout-form {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+}
+
+.mdl-layout__drawer .mdl-navigation .logout-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.mdl-navigation .logout-form button {
+    background:none!important;
+    text-align: left;
+    color:inherit;
+    border:none; 
+    padding: 16px 40px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.mdl-navigation .logout-form button:hover {
+    text-decoration: underline;
 }
