@@ -28,3 +28,34 @@ html {
 .mdl-navigation .logout-form button:hover {
     text-decoration: underline;
 }
+
+.intro {
+  position: relative;
+  height: 800px;
+  width: auto;
+  background-color: #f3f3f3;
+  background-size: contain;
+}
+
+.logo-font {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1;
+  color: #767777;
+  font-weight: 500;
+}
+
+.intro-slogan {
+  font-size: 60px;
+  padding-top: 160px;
+}
+
+.intro-sub-slogan {
+  font-size: 21px;
+  padding-top: 24px;
+}
+
+.intro-screen-section {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
