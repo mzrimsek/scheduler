@@ -45,7 +45,8 @@
     </head>
 
     <body>
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">            
+            <!-- Header Content -->
             <header class="mdl-layout__header">
                 <div class="mdl-layout__header-row">
                     <span class="mdl-layout-title">Scheduler</span>
@@ -60,6 +61,8 @@
                     </nav>
                 </div>
             </header>
+
+            <!-- Naviation Drawer -->
             <div class="mdl-layout__drawer">
                 <span class="mdl-layout-title">Scheduler</span>
                 <nav class="mdl-navigation">
@@ -73,22 +76,28 @@
                 </nav>
             </div>
 
+            <!-- Main Content -->
             <main class="mdl-layout__content">
+                <a name="top"></a>  
                 <div class="page-content">
-                    <a name="top"></a>
                     @RenderBody()
-                    <footer class="mdl-mini-footer">
-                        <div class="mdl-mini-footer__left-section">
-                            <div class="mdl-logo">&copy; 2017 - Scheduler</div>        
-                        </div>
-                        <div class="mdl-mini-footer__right-section">
-                            <a class="mdl-typography--font-light" href="#top">
-                                Back to Top
-                                <i class="material-icons">expand_less</i>
-                        </div>
-                    </footer>
                 </div>
             </main>
+
+            <div class="mdl-layout-spacer"></div>
+
+            <!-- Footer Content -->
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">&copy; 2017 - Scheduler</div>        
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <a class="mdl-typography--font-light" href="#top">
+                        Back to Top
+                        <i class="material-icons">expand_less</i>
+                    </a>
+                </div>
+            </footer>
         </div>
         <environment names="Development">
             <script src="~/lib/jquery/dist/jquery.js"></script>
