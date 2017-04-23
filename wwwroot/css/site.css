@@ -10,6 +10,15 @@ body {
   margin: 0;
 }
 
+.mdl-layout__content {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.page-content {
+  flex-grow: 1;
+}
+
 .mdl-layout__header .mdl-navigation .logout-form {
     display: flex;
 }
