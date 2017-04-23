@@ -240,7 +240,7 @@ namespace scheduler.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction("ViewCalendar", "Scheduler");
             }
         }
     }
