@@ -72,6 +72,21 @@ body {
   padding-bottom: 80px;
 }
 
+.mdl-cell {
+  display: flex;
+  justify-content: center;
+}
+
+.mdl-card {
+  width: 320px;
+  height: 320px;
+}
+
+.mdl-card__title {
+  color: #fff;
+  background-size: 75% 75% !important;
+}
+
 @media (max-width: 900px) {
   .mdl-navigation {
     display: none;
