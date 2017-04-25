@@ -16,7 +16,7 @@
     @Html.AntiForgeryToken()
     
     <div class="mdl-grid">
-        <div class="mdl-cell">
+        <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <div class="mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="email" id="email" asp-for="Email">
                 <label class="mdl-textfield__label" for="email" asp-for="Email">Email</label>
@@ -24,28 +24,26 @@
             </div>
         </div>
         
-        <div class="mdl-cell">
+        <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--3-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <div class="mdl-textfield mdl-js-textfield">
                 <input class="mdl-textfield__input" type="password" id="password" asp-for="Password">
                 <label class="mdl-textfield__label" for="password" asp-for="Password">Password</label>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
         </div>
-    </div>
-    <div class="mdl-grid">
-        <div class="mdl-cell">
+        <div class="mdl-cell mdl-cell--2-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit">Log in</button>       
         </div>
     </div>
 </form>
 
 <div class="mdl-grid">
-    <p>
-        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-    </p>
-    <p>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>        
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
         <a asp-action="ForgotPassword">Forgot your password?</a>
-    </p>
+    </div>
 </div>
 
 @section Scripts {
