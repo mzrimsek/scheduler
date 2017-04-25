@@ -8,8 +8,7 @@
     ViewData["Title"] = "Log in";
 }
 
-<div class="mdl-typography--display-1-color-contrast header">@ViewData["Title"]</div>
-
+<div class="mdl-typography--display-2-color-contrast header">@ViewData["Title"]</div>
 <div asp-validation-summary="All" class="text-danger"></div>
 
 <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="input-form">

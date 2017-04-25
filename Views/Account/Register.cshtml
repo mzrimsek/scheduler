@@ -3,57 +3,57 @@
     ViewData["Title"] = "Account Registration";
 }
 
-<h2>@ViewData["Title"]</h2>
-<h4>Create a new account.</h4>
-<hr />
-<div class="row">
-    <div class="col-md-6">
-        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-            @Html.AntiForgeryToken()
-            <div class="form-group">
-                <label asp-for="Email" class="col-md-2 control-label"></label>
-                <div class="col-md-10">
-                    <input asp-for="Email" class="form-control" />
+<div class="mdl-typography--display-2-color-contrast header">@ViewData["Title"]</div>
+<div class="mdl-typography--display-1-color-contrast header">Create a new account</div>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<div class="mdl-grid">
+    <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone input-form">
+        @Html.AntiForgeryToken()
+        
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--11-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="email" id="email" asp-for="Email">
+                    <label class="mdl-textfield__label" for="email" asp-for="Email">Email</label>
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="col-md-2 control-label"></label>
-                <div class="col-md-10">
-                    <input asp-for="Password" class="form-control" />
+            
+            <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--11-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="password" id="password" asp-for="Password">
+                    <label class="mdl-textfield__label" for="password" asp-for="Password">Password</label>
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
-                <div class="col-md-10">
-                    <input asp-for="ConfirmPassword" class="form-control" />
-                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--11-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="password" id="confirmPassword" asp-for="ConfirmPassword">
+                    <label class="mdl-textfield__label" for="confirmPassword" asp-for="ConfirmPassword">Confirm Password</label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-default">Register</button>
-                </div>
+            <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit">Register</button>       
             </div>
-        </form>
-    </div>
-    <div class="col-md-6">
-        <div class="password-requirements">
-            <h4>Password Requirements:</h4>
-            <div class="requirement-bullets">
-                <ul>
-                    <li>Minimum of 8 characters </li>
-                    <li>Must have at least one uppercase and lowercase letter </li>
-                    <li>Must have at least one number</li>
-                    <li>Must have at least one special character</li>
-                    <li>Cannot contain your username </li>
-                    <li>Cannot be a previously used password </li>
-                </ul>
-            </div>
+        </div>
+    </form>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-cell--4-col-phone password-requirements">
+        <h4>Password Requirements:</h4>
+        <div class="requirement-bullets">
+            <ul>
+                <li>Minimum of 8 characters </li>
+                <li>Must have at least one uppercase and lowercase letter </li>
+                <li>Must have at least one number</li>
+                <li>Must have at least one special character</li>
+                <li>Cannot contain your username </li>
+                <li>Cannot be a previously used password </li>
+            </ul>
         </div>
     </div>
 </div>
+
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

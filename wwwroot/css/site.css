@@ -114,6 +114,13 @@ body {
   padding: 20px;
 }
 
+.password-requirements {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 @media (max-width: 900px) {
   .mdl-navigation {
     display: none;
