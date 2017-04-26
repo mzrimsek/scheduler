@@ -47,17 +47,15 @@
             <div class="mdl-card__supporting-text event-footer">
                 @if (calendarEvent.CreatedById == @UserManager.GetUserId(User))
                 {
-                    <div>
-                        <a asp-controller="Scheduler" asp-action="EditEvent" asp-route-eventId="@calendarEvent.EventId">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Edit</button>
-                        </a>
-                        <a asp-controller="Scheduler" asp-action="RemoveEvent" asp-route-eventId="@calendarEvent.EventId">
-                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button">Remove</button>
-                        </a>
-                    </div>
+                    <a asp-controller="Scheduler" asp-action="EditEvent" asp-route-eventId="@calendarEvent.EventId">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Edit</button>
+                    </a>
+                    <a asp-controller="Scheduler" asp-action="RemoveEvent" asp-route-eventId="@calendarEvent.EventId">
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button">Remove</button>
+                    </a>
                 }
                 else {
-                    <div>@calendarEvent.CreatedByEmail</div>  
+                    @calendarEvent.CreatedByEmail
                 }
             </div>
         </div>

@@ -137,6 +137,11 @@ body {
   color: black;
 }
 
+.calendar-event .event-info .event-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
 @media (max-width: 900px) {
   .mdl-navigation {
     display: none;
