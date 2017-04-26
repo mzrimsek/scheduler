@@ -125,6 +125,10 @@ body {
   align-items: center;
 }
 
+.calendar-event .mdl-card__title {
+  color: black;
+}
+
 @media (max-width: 900px) {
   .mdl-navigation {
     display: none;
