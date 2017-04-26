@@ -1,6 +1,7 @@
 $( document ).ready(function() {
     //dates
     $('#datetimepicker1').datetimepicker({
+        useCurrent: false,
         format: 'MM/DD/YYYY',
         daysOfWeekDisabled: [0, 6]
     });
