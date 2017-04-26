@@ -125,7 +125,15 @@ body {
   align-items: center;
 }
 
-.calendar-event .mdl-card__title {
+.calendar-event .event-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+
+.calendar-event .event-info .mdl-card__title {
   color: black;
 }
 

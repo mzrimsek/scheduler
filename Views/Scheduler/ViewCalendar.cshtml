@@ -21,30 +21,45 @@
 <div class="mdl-grid">
 @foreach (var calendarEvent in Model)
 {
-    <div class="mdl-cell mdl-cell--4-col calendar-event">
-        <div class="mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title mdl-card--border">
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone calendar-event">
+        <div class="mdl-card mdl-shadow--2dp event-info">
+            <div class="mdl-card__title mdl-card--border event-name">
                 <h2 class="mdl-card__title-text">@calendarEvent.EventTitle</h2>
             </div>
-            <div class="mdl-card__supporting-text mdl-card--border">@calendarEvent.EventDescription</div>
-            <div class="mdl-card__supporting-text mdl-card--border">
+            <div class="mdl-card__supporting-text mdl-card--border event-desc">@calendarEvent.EventDescription</div>
+            <div class="mdl-card__supporting-text mdl-card--border event-time">
+                
                 <div>Start: @calendarEvent.StartDateTime</div>
                 <div>End: @calendarEvent.EndDateTime</div>
             </div>
-            @if (calendarEvent.CreatedById == @UserManager.GetUserId(User))
-            {
-                <div class="mdl-card__actions">
-                    <a asp-controller="Scheduler" asp-action="EditEvent" asp-route-eventId="@calendarEvent.EventId">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Edit</button>
-                    </a>
-                    <a asp-controller="Scheduler" asp-action="RemoveEvent" asp-route-eventId="@calendarEvent.EventId">
-                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button">Remove</button>
-                    </a>
-                </div>
-            }
-            else {
-                <div class="mdl-card__supporting-text">@calendarEvent.CreatedByEmail</div>  
-            }
+            <div class="mdl-card__supporting-text mdl-card--border event-invitees">
+                <ul class="mdl-list">
+                    @foreach (var email in calendarEvent.InviteeEmails)
+                    {
+                        <li class="mdl-list__item">@email</li>
+                    }
+                </ul>
+                @if (calendarEvent.InviteeEmails.Count() == 0)
+                {
+                    <div>No invitees!</div>
+                }
+            </div>
+            <div class="mdl-card__supporting-text event-footer">
+                @if (calendarEvent.CreatedById == @UserManager.GetUserId(User))
+                {
+                    <div>
+                        <a asp-controller="Scheduler" asp-action="EditEvent" asp-route-eventId="@calendarEvent.EventId">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Edit</button>
+                        </a>
+                        <a asp-controller="Scheduler" asp-action="RemoveEvent" asp-route-eventId="@calendarEvent.EventId">
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button">Remove</button>
+                        </a>
+                    </div>
+                }
+                else {
+                    <div>@calendarEvent.CreatedByEmail</div>  
+                }
+            </div>
         </div>
     </div>
     
