@@ -121,6 +121,10 @@ body {
   align-items: center;
 }
 
+.calendar-header {
+  align-items: center;
+}
+
 @media (max-width: 900px) {
   .mdl-navigation {
     display: none;

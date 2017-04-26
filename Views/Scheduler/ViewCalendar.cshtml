@@ -10,9 +10,12 @@
 @{
     ViewData["Title"] = "Your Calendar";
 }
-<div class="page-header calendar-header">
-    <h1>Your Calendar</h1>
-    <a class="btn btn-primary btn-lg" asp-controller="Scheduler" asp-action="Index">Create a new event</a>
+
+<div class="mdl-grid calendar-header">
+    <div class="mdl-typography--display-2-color-contrast mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone header">@ViewData["Title"]</div>
+    <a class="mdl-cell mdl-cell--4-offset-desktop mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone" asp-controller="Scheduler" asp-action="Index">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Create a new event</button>
+    </a>
 </div>
 
 <div class="calendar-event">
