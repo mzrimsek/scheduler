@@ -3,13 +3,11 @@ $( document ).ready(function() {
     $('#datetimepicker1').datetimepicker({
         useCurrent: false,
         format: 'MM/DD/YYYY',
-        daysOfWeekDisabled: [0, 6]
     });
 
     $('#datetimepicker2').datetimepicker({
         useCurrent: false,
         format: 'MM/DD/YYYY',
-        daysOfWeekDisabled: [0, 6]
     });
 
     $("#datetimepicker1").on("dp.change", function (e) {
