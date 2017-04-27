@@ -133,8 +133,14 @@ body {
   height: auto;
 }
 
-.calendar-event .event-info .mdl-card__title {
+.calendar-event .event-info .event-name {
   color: black;
+  background-color: rgb(255, 171, 64);
+}
+
+.calendar-event .event-info .event-time {
+  display: flex;
+  justify-content: space-between;
 }
 
 .calendar-event .event-info .event-footer {

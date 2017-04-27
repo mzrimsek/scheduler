@@ -28,20 +28,21 @@
             </div>
             <div class="mdl-card__supporting-text mdl-card--border event-desc">@calendarEvent.EventDescription</div>
             <div class="mdl-card__supporting-text mdl-card--border event-time">
-                
-                <div>Start: @calendarEvent.StartDateTime</div>
-                <div>End: @calendarEvent.EndDateTime</div>
+                <div><strong>Start:</strong> @calendarEvent.StartDateTime</div>
+                <div><strong>End:</strong> @calendarEvent.EndDateTime</div>
             </div>
             <div class="mdl-card__supporting-text mdl-card--border event-invitees">
-                <ul class="mdl-list">
-                    @foreach (var email in calendarEvent.InviteeEmails)
-                    {
-                        <li class="mdl-list__item">@email</li>
-                    }
-                </ul>
                 @if (calendarEvent.InviteeEmails.Count() == 0)
                 {
                     <div>No invitees!</div>
+                }
+                else {
+                    <ul class="mdl-list">
+                        @foreach (var email in calendarEvent.InviteeEmails)
+                        {
+                            <li class="mdl-list__item">@email</li>
+                        }
+                    </ul>
                 }
             </div>
             <div class="mdl-card__supporting-text event-footer">
