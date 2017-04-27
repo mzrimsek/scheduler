@@ -148,6 +148,12 @@ body {
   justify-content: space-around;
 }
 
+.remove-event {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
 @media (max-width: 900px) {
   .mdl-navigation {
     display: none;
@@ -184,4 +190,8 @@ body {
   .intro-fab {
     display: none;
   }
+
+  .remove-event {
+  width: 100%;
+}
 }
