@@ -6,7 +6,7 @@
 }
 <h2>Edit Event</h2>
 
-<form asp-controller="Scheduler" asp-action="UpdateEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+<form asp-controller="Scheduler" asp-action="UpdateEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
     @Html.AntiForgeryToken()
     
     @{ await Html.RenderPartialAsync("_EventForm", Model); }
