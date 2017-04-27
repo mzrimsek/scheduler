@@ -3,34 +3,29 @@
 <div class="mdl-grid">
     <div class="mdl-cell">
         <div class="mdl-textfield mdl-js-textfield">
-            <input required class="mdl-textfield__input" asp-for="EventTitle" class="form-control" id="title" type="text">
+            <input required class="mdl-textfield__input" asp-for="EventTitle" id="title" type="text">
             <label class="mdl-textfield__label" asp-for="EventTitle" for="title">Event Title</label>
         </div>
     </div>
+</div>
+<div class="mdl-grid">
     <div class="mdl-cell">
         <div class="mdl-textfield mdl-js-textfield">
-            <input required class="mdl-textfield__input" asp-for="EventDescription" class="form-control" id="desc" type="text">
+            <input required class="mdl-textfield__input" asp-for="EventDescription" id="desc" type="text">
             <label class="mdl-textfield__label" asp-for="EventDescription" for="desc">Event Description</label>
         </div>
     </div>
 </div>
-
-<!--<div class="contact-container">
-    <div class="row">
-        <div class="control-group col-md-6" id="fields">
-            <label asp-for="InviteeEmails" class="control-label">Enter contacts to add to the meeting separated by commas</label>
-            <div class="controls"> 
-                <div role="form" autocomplete="off">
-                    <div class="entry">
-                        <input asp-for="InviteeEmails" class="form-control" name="InviteeEmails" type="text" placeholder="E-mail Addresses"/>
-                    </div>
-                </div>
-            </div>
+<div class="mdl-grid">
+    <div class="mdl-cell">
+        <div class="mdl-textfield mdl-js-textfield">
+            <input required class="mdl-textfield__input" asp-for="InviteeEmails" name="InviteeEmails" id="emails" type="text">
+            <label class="mdl-textfield__label" asp-for="InviteeEmails" for="emails">Invitee emails</label>
         </div>
-    </div>    
+    </div>
 </div>
 
-<div class="date-container"> 
+<!--<div class="date-container"> 
     <label class="form-label" asp-for="StartDate" for="field1">Choose a date range for the meeting</label>  
     <div class="row"> 
         <div class='col-xs-3'>
