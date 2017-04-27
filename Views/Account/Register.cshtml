@@ -14,7 +14,7 @@
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--11-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="email" id="email" asp-for="Email">
+                    <input required class="mdl-textfield__input" type="email" id="email" asp-for="Email">
                     <label class="mdl-textfield__label" for="email" asp-for="Email">Email</label>
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
@@ -22,14 +22,14 @@
             
             <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--11-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="password" id="password" asp-for="Password">
+                    <input required class="mdl-textfield__input" type="password" id="password" asp-for="Password">
                     <label class="mdl-textfield__label" for="password" asp-for="Password">Password</label>
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
             </div>
             <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--11-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="password" id="confirmPassword" asp-for="ConfirmPassword">
+                    <input required class="mdl-textfield__input" type="password" id="confirmPassword" asp-for="ConfirmPassword">
                     <label class="mdl-textfield__label" for="confirmPassword" asp-for="ConfirmPassword">Confirm Password</label>
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
