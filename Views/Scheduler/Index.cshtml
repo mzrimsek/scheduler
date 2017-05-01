@@ -4,7 +4,8 @@
 @{
     ViewData["Title"] = "Create New Event";
 }
-<h2>Create New Event</h2>
+
+<div class="mdl-typography--display-2-color-contrast mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone header">@ViewData["Title"]</div>
 
 <form asp-controller="Scheduler" asp-action="CreateEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
     @Html.AntiForgeryToken()
