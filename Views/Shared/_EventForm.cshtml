@@ -19,60 +19,36 @@
 <div class="mdl-grid">
     <div class="mdl-cell">
         <div class="mdl-textfield mdl-js-textfield">
-            <input required class="mdl-textfield__input" asp-for="InviteeEmails" name="InviteeEmails" id="emails" type="text">
+            <input class="mdl-textfield__input" asp-for="InviteeEmails" name="InviteeEmails" id="emails" type="text">
             <label class="mdl-textfield__label" asp-for="InviteeEmails" for="emails">Invitee emails</label>
         </div>
     </div>
 </div>
-
-<!--<div class="date-container"> 
-    <label class="form-label" asp-for="StartDate" for="field1">Choose a date range for the meeting</label>  
-    <div class="row"> 
-        <div class='col-xs-3'>
-            <div class="form-group">          
-                <div class='input-group date' id='datetimepicker1'>
-                    <input required asp-for="StartDate" type='text' id="startDate" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
+<div class="mdl-grid">
+    <div class="mdl-cell" >
+        <div class="mdl-textfield mdl-js-textfield">
+            <input required class="mdl-textfield__input" asp-for="StartDate" id="startDate" type="date">
+            <!--<label class="mdl-textfield__label" asp-for="StartDate" for="startDate">Start Date</label>-->
         </div>
-        <div class='col-xs-3'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker2'>
-                    <input required asp-for="EndDate" type='text' id="endDate" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
+    </div>
+    <div class="mdl-cell">
+        <div class="mdl-textfield mdl-js-textfield">
+            <input required class="mdl-textfield__input" asp-for="EndDate" id="endDate" type="date">
+            <!--<label class="mdl-textfield__label" asp-for="EndDate" for="endDate">End Date</label>-->
         </div>
     </div>
 </div>
-
-<div class="time-container"> 
-    <label class="form-label" asp-for="StartTime" for="field1">Choose a time range for the meeting</label>  
-    <div class="row"> 
-        <div class='col-xs-3'>
-            <div class="form-group">          
-                <div class='input-group date' id='datetimepicker3'>
-                    <input required asp-for="StartTime" type='text' id="startTime" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class='col-xs-3'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker4'>
-                    <input required asp-for="EndTime" type='text' id="endTime" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
+<div class="mdl-grid">
+    <div class="mdl-cell" >
+        <div class="mdl-textfield mdl-js-textfield">
+            <input required class="mdl-textfield__input" asp-for="StartTime" id="startTime" type="time">
+            <!--<label class="mdl-textfield__label" asp-for="StartDate" for="startDate">Start Date</label>-->
         </div>
     </div>
-</div>-->
+    <div class="mdl-cell">
+        <div class="mdl-textfield mdl-js-textfield">
+            <input required class="mdl-textfield__input" asp-for="EndTime" id="endTime" type="time">
+            <!--<label class="mdl-textfield__label" asp-for="EndDate" for="endDate">End Date</label>-->
+        </div>
+    </div>
+</div>
