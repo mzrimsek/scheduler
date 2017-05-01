@@ -14,15 +14,11 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
         <environment names="Development">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
             <link rel="stylesheet" href="~/lib/mdl/dist/css/material.css" />
-            <link rel="stylesheet" href="~/lib/bootstrap-datetimepicker/dist/css/bootstrap-datetimepicker.css" />
             <link rel="stylesheet" href="~/css/site.css" />
         </environment>
         <environment names="Staging,Production">
-            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
             <link rel="stylesheet" href="~/lib/mdl/dist/css/material.min.css" />
-            <link rel="stylesheet" href="~/lib/bootstrap-datetimepicker/dist/css/bootstrap-datetimepicker.min.css" />
             <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         </environment>
         <style>
@@ -87,31 +83,12 @@
         </div>
         <environment names="Development">
             <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
             <script src="~/lib/mdl/dist/js/material.js"></script>
-            <script src="~/lib/moment/dist/moment.js"></script>
-            <script src="~/lib/bootstrap-datetimepicker/dist/js/bootstrap-datetimepicker.js"></script>
             <script src="~/js/site.js" asp-append-version="true"></script>
         </environment>
         <environment names="Staging,Production">
             <script src="~/lib/jquery/dist/jquery.min.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
             <script src="~/lib/mdl/dist/js/material.min.js"></script>
-            <script src="~/lib/moment/dist/moment.min.js"></script>
-            <script src="~/lib/bootstrap-datetimepicker/dist/js/bootstrap-datetimepicker.min.js"></script>
-            <script src="~/lib/jquery/dist/jquery.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-            <script src="~/lib/mdl/dist/js/material.js"></script>
-            <script src="~/lib/moment/dist/moment.js"></script>
-            <script src="~/lib/bootstrap-datetimepicker/dist/js/bootstrap-datetimepicker.js"></script>
-            <script src="~/js/site.js" asp-append-version="true"></script>
-        </environment>
-        <environment names="Staging,Production">
-            <script src="~/lib/jquery/dist/jquery.min.js"></script>
-            <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-            <script src="~/lib/mdl/dist/js/material.min.js"></script>
-            <script src="~/lib/moment/dist/moment.min.js"></script>
-            <script src="~/lib/bootstrap-datetimepicker/dist/js/bootstrap-datetimepicker.min.js"></script>
             <script src="~/js/site.min.js" asp-append-version="true"></script>
         </environment>
         @RenderSection("scripts", required: false)
