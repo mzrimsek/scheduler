@@ -2,7 +2,9 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -20,26 +22,26 @@ body {
 }
 
 .mdl-layout__header .mdl-navigation .logout-form {
-    display: flex;
+  display: flex;
 }
 
 .mdl-layout__drawer .mdl-navigation .logout-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .mdl-navigation .logout-form button {
-    background:none!important;
-    text-align: left;
-    color:inherit;
-    border:none; 
-    padding: 16px 40px;
-    font: inherit;
-    cursor: pointer;
+  background: none!important;
+  text-align: left;
+  color: inherit;
+  border: none;
+  padding: 16px 40px;
+  font: inherit;
+  cursor: pointer;
 }
 
 .mdl-navigation .logout-form button:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .intro {
@@ -81,17 +83,17 @@ body {
   padding-bottom: 80px;
 }
 
-.intro-screen-section .intro-screens .invite-screen, .intro-screen-section .intro-screens .time-screen, .intro-screen-section .intro-screens .schedule-screen {
+.intro-screen-section .intro-screens .invite-screen,
+.intro-screen-section .intro-screens .time-screen,
+.intro-screen-section .intro-screens .schedule-screen {
   display: flex;
   justify-content: center;
 }
 
-.event-info {
-  width: 320px;
+.intro-screen-section .intro-screens .invite-screen .screen-title,
+.intro-screen-section .intro-screens .time-screen .screen-title,
+.intro-screen-section .intro-screens .schedule-screen .screen-title {
   height: 320px;
-}
-
-.event-info .event-name {
   color: #fff;
   background-size: 75% 75% !important;
 }
@@ -156,11 +158,9 @@ body {
   .mdl-navigation {
     display: none;
   }
-
   .intro-title {
     display: none !important;
   }
-
   .intro-mobile-title {
     display: block !important;
     position: absolute;
@@ -168,28 +168,23 @@ body {
     top: 12px;
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-
   .intro {
     height: 350px;
   }
-
   .intro-slogan {
     font-size: 26px;
     margin: 0 16px;
     padding-top: 24px;
   }
-
   .intro-sub-slogan {
     font-size: 16px;
     margin: 0 16px;
     padding-top: 8px;
   }
-
   .intro-fab {
     display: none;
   }
-
   .remove-event {
-  width: 100%;
-}
+    width: 100%;
+  }
 }
