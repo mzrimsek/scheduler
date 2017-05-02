@@ -19,15 +19,6 @@ namespace scheduler.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "What is the Scheduler?";
-
-            return View();
-        }
-
-        public IActionResult Schedule()
-        {
-            ViewData["Message"] = "Schedule a Meeting";
-
             return View();
         }
 

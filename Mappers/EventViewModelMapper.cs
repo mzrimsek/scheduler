@@ -16,10 +16,10 @@ namespace scheduler.Mappers
                 EventTitle = eventModel.Title,
                 EventDescription = eventModel.Description,
                 InviteeEmails = inviteeEmailList,
-                StartDate = eventModel.StartTime.ToString("d"),
-                EndDate = eventModel.EndTime.ToString("d"),
-                StartTime = eventModel.StartTime.ToString("t"),
-                EndTime = eventModel.EndTime.ToString("t")
+                StartDate = eventModel.StartTime.ToString("yyyy-MM-dd"),
+                EndDate = eventModel.EndTime.ToString("yyyy-MM-dd"),
+                StartTime = eventModel.StartTime.ToString("HH:mm"),
+                EndTime = eventModel.EndTime.ToString("HH:mm")
             };
         }
     }

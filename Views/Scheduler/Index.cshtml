@@ -4,93 +4,18 @@
 @{
     ViewData["Title"] = "Create New Event";
 }
-<h2>Create New Event</h2>
 
-<form asp-controller="Scheduler" asp-action="CreateEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+<div class="mdl-typography--display-2-color-contrast mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone header">@ViewData["Title"]</div>
+
+<form asp-controller="Scheduler" asp-action="CreateEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="event-form">
     @Html.AntiForgeryToken()
     
-    <div class="event-description-container col-xs-12">
-        <div>
-            <div class="form-group">
-                <label asp-for="EventTitle" for="inputdefault">Event Title</label>
-                <input required asp-for="EventTitle" class="form-control" id="inputdefault" type="text">
-            </div>
-            <div class="form-group">
-                <label asp-for="EventDescription" for="inputdefault">Event Description</label>
-                <input required asp-for="EventDescription" class="form-control" id="inputdefault" type="text">
-            </div>
-        </div>
-    </div>
+    @{ await Html.RenderPartialAsync("_EventForm", Model); }
 
-    <div class="contact-container">
-        <div class="row">
-            <div class="control-group col-md-6" id="fields">
-                <label asp-for="InviteeEmails" class="control-label">Enter contacts to add to the meeting separated by commas</label>
-                <div class="controls"> 
-                    <div role="form" autocomplete="off">
-                        <div class="entry">
-                            <input asp-for="InviteeEmails" class="form-control" name="InviteeEmails" type="text" placeholder="E-mail Addresses"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>    
-    </div>
-    
-    <div class="date-container"> 
-        <label class="form-label" asp-for="StartDate" for="field1">Choose a date range for the meeting</label>  
-        <div class="row"> 
-            <div class='col-xs-3'>
-                <div class="form-group">          
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input required asp-for="StartDate" type='text' id="startDate" class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class='col-xs-3'>
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker2'>
-                        <input required asp-for="EndDate" type='text' id="endDate" class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
+    <div class="mdl-grid">
+        <div class="mdl-cell">
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Schedule Meeting</button>
         </div>
-    </div>
-
-    <div class="time-container"> 
-        <label class="form-label" asp-for="StartTime" for="field1">Choose a time range for the meeting</label>  
-        <div class="row"> 
-            <div class='col-xs-3'>
-                <div class="form-group">          
-                    <div class='input-group date' id='datetimepicker3'>
-                        <input required asp-for="StartTime" type='text' id="startTime" class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-time"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class='col-xs-3'>
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker4'>
-                        <input required asp-for="EndTime" type='text' id="endTime" class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-time"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="button-container">
-        <input class="btn btn-primary" type="submit" value="Schedule Meeting">
     </div>
 </form>
 

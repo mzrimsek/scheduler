@@ -1,63 +1,105 @@
-$( document ).ready(function() {
-    //dates
-    $('#datetimepicker1').datetimepicker({
-        format: 'MM/DD/YYYY',
-        daysOfWeekDisabled: [0, 6]
+var handleDateTimeField = function(id, inputType) {
+    let input = $("#" + id);
+    let label = $("label[for='" + id + "']");
+
+    if(input.val()) {
+        document.getElementById(id).type = inputType;
+    }
+
+    input.on("focus", () => {
+        document.getElementById(id).type = inputType;
+        label.hide();
     });
 
-    $('#datetimepicker2').datetimepicker({
-        useCurrent: false,
-        format: 'MM/DD/YYYY',
-        daysOfWeekDisabled: [0, 6]
-    });
-
-    $("#datetimepicker1").on("dp.change", function (e) {
-        $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
-        $('#datetimepicker3').data("DateTimePicker").clear();
-        $('#datetimepicker4').data("DateTimePicker").clear()
-    });
-    
-    $("#datetimepicker2").on("dp.change", function (e) {
-        $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
-        $('#datetimepicker3').data("DateTimePicker").clear();
-        $('#datetimepicker4').data("DateTimePicker").clear()
-    });
-
-    //times
-    $('#datetimepicker3').datetimepicker({
-        format: 'HH:mm',
-        useCurrent: false,
-        minDate: moment({h:00, m:01}),
-        maxDate: moment({h:23, m:45}),
-        stepping: 15
-    });
-
-    $('#datetimepicker4').datetimepicker({
-        format: 'HH:mm',
-        useCurrent: false,
-        minDate: moment({h:00, m:01}),
-        maxDate: moment({h:23, m:45}),
-        stepping: 15
-    });
-
-   $('#datetimepicker3').on("dp.change", function(e) {
-       if($("#startDate").val() == $("#endDate").val())
-       {
-           $('#datetimepicker4').data("DateTimePicker").minDate(e.date);
-       } else {
-           $('#datetimepicker4').data("DateTimePicker").minDate(false);
-       }
-    });
-
-    $('#datetimepicker4').on("dp.change", function(e) {
-        if($("#startDate").val() == $("#endDate").val())
-        {
-            $('#datetimepicker3').data("DateTimePicker").maxDate(e.date);
-        } else {
-            $('#datetimepicker3').data("DateTimePicker").maxDate(false);
+    input.on("focusout", () => {
+        if(!input.val()) {
+            document.getElementById(id).type = "text";
+            label.show();
         }
     });
+}
 
-    
+var initializeDateFields = function(startId, endId) {
+    let startDate = $("#" + startId);
+    let endDate = $("#" + endId);
 
+    let startDateVal = startDate.val();
+    if(startDateVal) {
+        endDate.attr("min", startDateVal);
+    }
+
+    let endDateVal = endDate.val();
+    if(endDateVal) {
+        startDate.attr("max", endDateVal);
+    }
+}
+
+var syncDateFields = function(startId, endId) {
+    let startDate = $("#" + startId);
+    let endDate = $("#" + endId);
+
+    startDate.on("change", () => {
+        let startDateVal = startDate.val();
+        if(startDateVal) {
+            endDate.attr("min", startDateVal);
+        } else {
+            endDate.attr("min", "");
+        }
+
+        if(startDateVal > endDate.val()) {
+            endDate.val(startDateVal);
+        }
+    })
+
+    endDate.on("change", () => {
+        let endDateVal = endDate.val();
+        if(endDateVal) {
+            startDate.attr("max", endDateVal);
+        } else {
+            startDate.attr("max", "");
+        }
+
+        if(endDateVal < startDate.val()) {
+            startDate.val(endDateVal);
+        }
+    });
+}
+
+var syncTimeFields = function(startId, endId) {
+    let startTime = $("#" + startId);
+    let endTime = $("#" + endId);
+
+    startTime.on("change", () => {
+        let startTimeVal = startTime.val();
+        if(startTimeVal > endTime.val()) {
+            endTime.val(startTimeVal);
+        }
+    })
+
+    endTime.on("change", () => {
+        let endTimeVal = endTime.val();
+        if(endTimeVal < startTime.val()) {
+            startTime.val(endTimeVal);
+        }
+    });
+}
+
+$(document).ready(function() {
+    let startDateId = "startDate";
+    let startTimeId = "startTime";
+    let endDateId = "endDate";
+    let endTimeId = "endTime";
+
+    handleDateTimeField(startDateId, "date");
+    handleDateTimeField(endDateId, "date");
+    initializeDateFields(startDateId, endDateId);
+    syncDateFields(startDateId, endDateId);
+
+    handleDateTimeField(startTimeId, "time");
+    handleDateTimeField(endTimeId, "time");
+
+    let shouldRestrictTimes = $("#" + startDateId).val() == $("#" + endDateId).val();
+    if(shouldRestrictTimes) {
+        syncTimeFields(startTimeId, endTimeId);
+    }
 });
