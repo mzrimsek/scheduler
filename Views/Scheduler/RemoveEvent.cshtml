@@ -4,15 +4,16 @@
 @{
     ViewData["Title"] = "Remove Event";
 }
-<h2>Are you sure you want to remove "@Model.EventTitle"?</h2>
 
-<form asp-controller="Scheduler" asp-action="DeleteEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+<div class="mdl-typography--display-1-color-contrast header">Are you sure you want to remove "@Model.EventTitle"?</div>
+
+<form asp-controller="Scheduler" asp-action="DeleteEvent" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="remove-event">
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.EventId)
 
-    <div class="button-container">
-        <input class="btn btn-danger" type="submit" value="Remove">
-        <a class="btn btn-default" asp-controller="Scheduler" asp-action="ViewCalendar">Cancel</a>
-    </div>
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">Remove</button>
+    <a asp-controller="Scheduler" asp-action="ViewCalendar">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button">Cancel</button>
+    </a>
 </form>
 
