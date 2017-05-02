@@ -1,20 +1,20 @@
-var handleDateFields = function(id) {
-    let dateInput = $("#" + id);
-    let dateLabel = $("label[for='" + id + "']");
+var handleDateTimeField = function(id, inputType) {
+    let input = $("#" + id);
+    let label = $("label[for='" + id + "']");
 
-    if(dateInput.val()) {
-        document.getElementById(id).type = "date";
+    if(input.val()) {
+        document.getElementById(id).type = inputType;
     }
 
-    dateInput.on("focus", () => {
-        document.getElementById(id).type = "date";
-        dateLabel.hide();
+    input.on("focus", () => {
+        document.getElementById(id).type = inputType;
+        label.hide();
     });
 
-    dateInput.on("focusout", () => {
-        if(!dateInput.val()) {
+    input.on("focusout", () => {
+        if(!input.val()) {
             document.getElementById(id).type = "text";
-            dateLabel.show();
+            label.show();
         }
     });
 }
@@ -65,34 +65,12 @@ var syncDateFields = function(startId, endId) {
     });
 }
 
-var handleTimeFields = function(id) {
-    let timeInput = $("#" + id);
-    let timeLabel = $("label[for='" + id + "']");
-
-    if(timeInput.val()) {
-        document.getElementById(id).type = "time";
-    }
-
-    timeInput.on("focus", () => {
-        document.getElementById(id).type = "time";
-        timeLabel.hide();
-    });
-
-    timeInput.on("focusout", () => {
-        if(!timeInput.val()) {
-            document.getElementById(id).type = "text";
-            timeLabel.show();
-        }
-    });
-}
-
 var syncTimeFields = function(startId, endId) {
     let startTime = $("#" + startId);
     let endTime = $("#" + endId);
 
     startTime.on("change", () => {
         let startTimeVal = startTime.val();
-        
         if(startTimeVal > endTime.val()) {
             endTime.val(startTimeVal);
         }
@@ -100,7 +78,6 @@ var syncTimeFields = function(startId, endId) {
 
     endTime.on("change", () => {
         let endTimeVal = endTime.val();
-
         if(endTimeVal < startTime.val()) {
             startTime.val(endTimeVal);
         }
@@ -113,13 +90,13 @@ $(document).ready(function() {
     let endDateId = "endDate";
     let endTimeId = "endTime";
 
-    handleDateFields(startDateId);
-    handleDateFields(endDateId);
+    handleDateTimeField(startDateId, "date");
+    handleDateTimeField(endDateId, "date");
     initializeDateFields(startDateId, endDateId);
     syncDateFields(startDateId, endDateId);
 
-    handleTimeFields(startTimeId);
-    handleTimeFields(endTimeId);
+    handleDateTimeField(startTimeId, "time");
+    handleDateTimeField(endTimeId, "time");
 
     let shouldRestrictTimes = $("#" + startDateId).val() == $("#" + endDateId).val();
     if(shouldRestrictTimes) {
