@@ -154,6 +154,10 @@ body {
   width: 50%;
 }
 
+.event-form .mdl-textfield {
+  width: 85%;
+}
+
 @media (max-width: 900px) {
   .mdl-navigation {
     display: none;
