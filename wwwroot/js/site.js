@@ -21,7 +21,7 @@ var handleDateFields = function(id) {
 
 var initializeDateFields = function(startId, endId) {
     let startDate = $("#" + startId);
-    let endDate= $("#" + endId);
+    let endDate = $("#" + endId);
 
     let startDateVal = startDate.val();
     if(startDateVal) {
@@ -36,7 +36,7 @@ var initializeDateFields = function(startId, endId) {
 
 var syncDateFields = function(startId, endId) {
     let startDate = $("#" + startId);
-    let endDate= $("#" + endId);
+    let endDate = $("#" + endId);
 
     startDate.on("change", () => {
         let startDateVal = startDate.val();
@@ -86,6 +86,27 @@ var handleTimeFields = function(id) {
     });
 }
 
+var syncTimeFields = function(startId, endId) {
+    let startTime = $("#" + startId);
+    let endTime = $("#" + endId);
+
+    startTime.on("change", () => {
+        let startTimeVal = startTime.val();
+        
+        if(startTimeVal > endTime.val()) {
+            endTime.val(startTimeVal);
+        }
+    })
+
+    endTime.on("change", () => {
+        let endTimeVal = endTime.val();
+
+        if(endTimeVal < startTime.val()) {
+            startTime.val(endTimeVal);
+        }
+    });
+}
+
 $(document).ready(function() {
     let startDateId = "startDate";
     let startTimeId = "startTime";
@@ -94,10 +115,10 @@ $(document).ready(function() {
 
     handleDateFields(startDateId);
     handleDateFields(endDateId);
-
     initializeDateFields(startDateId, endDateId);
     syncDateFields(startDateId, endDateId);
 
     handleTimeFields(startTimeId);
     handleTimeFields(endTimeId);
+    syncTimeFields(startTimeId, endTimeId);
 });
