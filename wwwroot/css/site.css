@@ -94,7 +94,6 @@ body {
 .intro-screen-section .intro-screens .time-screen .screen-title,
 .intro-screen-section .intro-screens .schedule-screen .screen-title {
   height: 320px;
-  width: 320px;
   color: #fff;
   background-size: 75% 75% !important;
 }
