@@ -1,7 +1,7 @@
 @model scheduler.Models.SchedulerViewModels.EventViewModel
 
 <div class="mdl-grid">
-    <div class="mdl-cell">
+    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-textfield mdl-js-textfield">
             <input required class="mdl-textfield__input" asp-for="EventTitle" id="title" type="text">
             <label class="mdl-textfield__label" asp-for="EventTitle" for="title">Event Title</label>
@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="mdl-grid">
-    <div class="mdl-cell">
+    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-textfield mdl-js-textfield">
             <input required class="mdl-textfield__input" asp-for="EventDescription" id="desc" type="text">
             <label class="mdl-textfield__label" asp-for="EventDescription" for="desc">Event Description</label>
@@ -17,7 +17,7 @@
     </div>
 </div>
 <div class="mdl-grid">
-    <div class="mdl-cell">
+    <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--8-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-textfield mdl-js-textfield">
             <input class="mdl-textfield__input" asp-for="InviteeEmails" name="InviteeEmails" id="emails" type="text">
             <label class="mdl-textfield__label" asp-for="InviteeEmails" for="emails">Invitee emails</label>
@@ -25,13 +25,13 @@
     </div>
 </div>
 <div class="mdl-grid">
-    <div class="mdl-cell" >
+    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-textfield mdl-js-textfield">
             <input required class="mdl-textfield__input" asp-for="StartDate" id="startDate" type="text">
             <label class="mdl-textfield__label" asp-for="StartDate" for="startDate">Start Date</label>
         </div>
     </div>
-    <div class="mdl-cell">
+    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-textfield mdl-js-textfield">
             <input required class="mdl-textfield__input" asp-for="EndDate" id="endDate" type="text">
             <label class="mdl-textfield__label" asp-for="EndDate" for="endDate">End Date</label>
@@ -39,13 +39,13 @@
     </div>
 </div>
 <div class="mdl-grid">
-    <div class="mdl-cell" >
+    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-textfield mdl-js-textfield">
             <input required class="mdl-textfield__input" asp-for="StartTime" id="startTime" type="text">
             <label class="mdl-textfield__label" asp-for="StartDate" for="startTime">Start Time</label>
         </div>
     </div>
-    <div class="mdl-cell">
+    <div class="mdl-cell mdl-cell--6-col-desktop mdl-cell--4-col-tablet mdl-cell--4-col-phone">
         <div class="mdl-textfield mdl-js-textfield">
             <input required class="mdl-textfield__input" asp-for="EndTime" id="endTime" type="text">
             <label class="mdl-textfield__label" asp-for="EndDate" for="endTime">End Time</label>

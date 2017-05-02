@@ -154,8 +154,12 @@ body {
   width: 50%;
 }
 
+.event-form {
+  padding: 10px;
+}
+
 .event-form .mdl-textfield {
-  width: 85%;
+  width: 100%;
 }
 
 @media (max-width: 900px) {
