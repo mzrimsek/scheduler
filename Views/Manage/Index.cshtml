@@ -3,23 +3,23 @@
     ViewData["Title"] = "Manage your account";
 }
 
-<h2>@ViewData["Title"]</h2>
+<div class="mdl-typography--display-2-color-contrast mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone header">@ViewData["Title"]</div>
 <p class="text-success">@ViewData["StatusMessage"]</p>
 
-<div>
-    <h4>Change your account settings</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            @if (Model.HasPassword)
-            {
-                <a asp-controller="Manage" asp-action="ChangePassword" class="btn-bracketed">Change</a>
-            }
-            else
-            {
-                <a asp-controller="Manage" asp-action="SetPassword" class="btn-bracketed">Create</a>
-            }
-        </dd>
-    </dl>
+<div class="account-settings">
+    <div class="mdl-typography--display-1-color-contrast header">Password</div>
+    <div class="password-settings">
+        @if (Model.HasPassword)
+        {
+            <a asp-controller="Manage" asp-action="ChangePassword">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button">Change</button>
+            </a>
+        }
+        else
+        {
+            <a asp-controller="Manage" asp-action="SetPassword">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button">Create</button>
+            </a>
+        }
+    </div>
 </div>

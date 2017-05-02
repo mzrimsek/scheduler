@@ -162,6 +162,10 @@ body {
   width: 100%;
 }
 
+.account-settings .password-settings a {
+  margin-left: 20px;
+}
+
 @media (max-width: 900px) {
   .mdl-navigation {
     display: none;
