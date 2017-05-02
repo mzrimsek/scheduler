@@ -81,11 +81,6 @@ body {
   padding-bottom: 80px;
 }
 
-.mdl-cell {
-  display: flex;
-  justify-content: center;
-}
-
 .mdl-card {
   width: 320px;
   height: 320px;
