@@ -81,28 +81,19 @@ body {
   padding-bottom: 80px;
 }
 
-.mdl-card {
+.intro-screen-section .intro-screens .invite-screen, .intro-screen-section .intro-screens .time-screen, .intro-screen-section .intro-screens .schedule-screen {
+  display: flex;
+  justify-content: center;
+}
+
+.event-info {
   width: 320px;
   height: 320px;
 }
 
-.mdl-card__title {
+.event-info .event-name {
   color: #fff;
   background-size: 75% 75% !important;
-}
-
-.mdl-mini-footer {
-  background: rgb(96, 125, 139);
-  color: #fff;
-}
-
-.mdl-mini-footer__right-section a {
-    color: #fff;
-}
-
-.mdl-mini-footer__right-section a .material-icons {
-    position: relative;
-    top: 6px;
 }
 
 .header {
