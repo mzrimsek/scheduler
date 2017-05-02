@@ -120,5 +120,9 @@ $(document).ready(function() {
 
     handleTimeFields(startTimeId);
     handleTimeFields(endTimeId);
-    syncTimeFields(startTimeId, endTimeId);
+
+    let shouldRestrictTimes = $("#" + startDateId).val() == $("#" + endDateId).val();
+    if(shouldRestrictTimes) {
+        syncTimeFields(startTimeId, endTimeId);
+    }
 });
