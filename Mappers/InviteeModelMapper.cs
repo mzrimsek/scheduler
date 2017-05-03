@@ -5,12 +5,12 @@ namespace scheduler.Mappers
 {
     public static class InviteeModelMapper
     {
-        public static Invitee MapFrom(Event invitedEvent, ApplicationUser inivteeUser)
+        public static Invitee MapFrom(Event invitedEvent, ApplicationUser inviteeUser)
         {
             return new Invitee
             {
                 EventId = invitedEvent.Id,
-                UserId = inivteeUser.Id,
+                UserId = inviteeUser.Id,
                 Accepted = false
             };
         }
